@@ -1,6 +1,10 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+  def new
+    @product = Product.new
+  end
+
   def index
     if params[:query] && !params[:query].empty?
       @products = Product.search_a_lot(params[:query])
@@ -18,13 +22,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Prodcut.find(params[:id])
-    @product = Product.new
-    @user = @product.user
-  end
-
-  def new
-    @product = Product.new
+    @product = Product.find(params[:id])
     @favorite = Favorite.new
     @user = @product.user
   end
@@ -36,6 +34,7 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product)
     else
       render :new, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -51,12 +50,9 @@ class ProductsController < ApplicationController
     redirect_to product_path
   end
 
+  private
 
-    private
-
-
-    def product_params
-      params.require(:friend_service).permit(:title, :description, :condition, :material, :price, :dimension, :location, :spotted, :photo, :latitude, :longitude )
-    end
+  def product_params
+    params.require(:product).permit(:photo, :title, :description, :condition, :material, :price, :dimension, :location, :latitude, :longitude, :spotted)
   end
 end

@@ -1,0 +1,17 @@
+<div class="container">
+  <%= link_to '← Go back', products_path, class: 'btn btn-primary btn-sm' %><br><br>
+  <br><br>
+  <h1><%= @product.title %></h1>
+  <h4><%= @product.description %></h4>
+  <br><br>
+  <p><strong>Condition:</strong> <%= @product.condition %></p>
+  <p><strong>Material:</strong> <%= @product.material %></p>
+  <p><strong>Price:</strong> <%= @product.price %></p>
+  <p><strong>Dimension:</strong> <%= @product.dimension %></p>
+  <p><strong>Location:</strong> <%= @product.location %></p>
+  <p><strong>Spotted:</strong> <%= @product.spotted %></p>
+  <br>
+  <%= link_to 'Contact seller', products_path, class: 'btn btn-primary btn-sm' %><br><br>
+  <%= link_to 'Edit Product', products_path, class: 'btn btn-primary btn-sm' %><br><br>
+  <%= link_to 'Delete Product', products_path, class: 'btn btn-primary btn-sm' %>
+</div>
