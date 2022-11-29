@@ -7,13 +7,13 @@ class ProductsController < ApplicationController
     else
       @product = Product.all
     end
-    # @markers = @friend_services.geocoded.map do |friend_service|
-    #   {
-    #     lat: friend_service.latitude,
-    #     lng: friend_service.longitude,
-    #     info_window: render_to_string(partial: "info_window", locals: {friend_service: friend_service})
-    #   }
-    # end
+    @markers = @products.geocoded.map do |product|
+      {
+        lat: product.latitude,
+        lng: product.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {product: product})
+      }
+    end
   end
 
   def show
@@ -24,13 +24,15 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @favorite = Favorite.new
+    @user = @product.user
   end
 
   def create
     @product = Product.new(product_params)
     @product.user = current_user
     if @product.save!
-      redirect_to products_path(@product)
+      redirect_to products_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -49,4 +51,11 @@ class ProductsController < ApplicationController
     redirect_to product_path
   end
 
+
+  private
+
+
+  def product_params
+    params.require(:friend_service).permit(:title, :description, :condition, :material, :price, :dimension, :location, :spotted, :photo, :latitude, :longitude )
+  end
 end
