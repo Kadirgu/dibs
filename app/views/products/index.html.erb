@@ -3,7 +3,9 @@
   <div class="products-container">
     <% @products.each do |product| %>
       <div class="product-card">
-        <p><%= product.name %></p>
+        <p><%= product.title %></p>
+        <p><%= product.condition %></p>
+        <p><%= product.description %></p>
       </div>
     <% end %>
   </div>
