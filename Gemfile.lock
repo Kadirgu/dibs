@@ -265,6 +265,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  faker!
   font-awesome-sass (~> 6.2.1)
   jbuilder
   jsbundling-rails
