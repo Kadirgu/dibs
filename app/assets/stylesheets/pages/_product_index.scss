@@ -1,0 +1,11 @@
+.product-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.product-card {
+  background-color: beige;
+  color: black;
+  text-decoration: none;
+}
