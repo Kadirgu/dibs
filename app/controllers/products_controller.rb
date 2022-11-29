@@ -3,9 +3,9 @@ class ProductsController < ApplicationController
 
   def index
     if params[:query] && !params[:query].empty?
-      @product = Product.search_a_lot(params[:query])
+      @products = Product.search_a_lot(params[:query])
     else
-      @product = Product.all
+      @products = Product.all
     end
 
     # @markers = @products.geocoded.map do |product|

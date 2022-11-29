@@ -1,47 +1,11 @@
 <%= render "layouts/navbar" %>
-  <div class="container">
-    <div class="row-ms">
-      <div class= "col-ms">
-        <p>dibs</p>
-
-          <div class="a">
-            <a href="https://placehold.jp"><img src="https://placehold.jp/300x300.png"></a>
-
-        <% @products.each do |product| %>
-          <div class="container">
-            <div class="row-ms-6">
-              <div class="col-ms">
-              <a href="https://placehold.jp"><img src="https://placehold.jp/150x150.png"></a>
-
-              </div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-ms-6">
-              <a href="https://placehold.jp"><img src="https://placehold.jp/150x150.png"></a>
-
-              </div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-ms-6">
-              <a href="https://placehold.jp"><img src="https://placehold.jp/150x150.png"></a>
-
-              </div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-ms-6">
-              <a href="https://placehold.jp"><img src="https://placehold.jp/150x150.png"></a>
-        <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="container">
+  <div class="products-container">
+    <% @products.each do |product| %>
+      <div class="product-card">
+        <p><%= product.name %></p>
       </div>
-    </div>
+    <% end %>
   </div>
+</div>
 <%= render "layouts/footer" %>
