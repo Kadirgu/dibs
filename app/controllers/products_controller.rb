@@ -8,13 +8,13 @@ class ProductsController < ApplicationController
       @product = Product.all
     end
 
-    @markers = @products.geocoded.map do |product|
-      {
-        lat: product.latitude,
-        lng: product.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {product: product})
-      }
-    end
+    # @markers = @products.geocoded.map do |product|
+    #   {
+    #     lat: product.latitude,
+    #     lng: product.longitude,
+    #     info_window: render_to_string(partial: "info_window", locals: {product: product})
+    #   }
+    # end
   end
 
   def show
@@ -52,10 +52,11 @@ class ProductsController < ApplicationController
   end
 
 
-  private
+    private
 
 
-  def product_params
-    params.require(:friend_service).permit(:title, :description, :condition, :material, :price, :dimension, :location, :spotted, :photo, :latitude, :longitude )
+    def product_params
+      params.require(:friend_service).permit(:title, :description, :condition, :material, :price, :dimension, :location, :spotted, :photo, :latitude, :longitude )
+    end
   end
 end
