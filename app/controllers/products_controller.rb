@@ -3,17 +3,18 @@ class ProductsController < ApplicationController
 
   def index
     if params[:query] && !params[:query].empty?
-      @product = Product.search_a_lot(params[:query])
+      @products = Product.search_a_lot(params[:query])
     else
-      @product = Product.all
+      @products = Product.all
     end
-    @markers = @products.geocoded.map do |product|
-      {
-        lat: product.latitude,
-        lng: product.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {product: product})
-      }
-    end
+
+    # @markers = @products.geocoded.map do |product|
+    #   {
+    #     lat: product.latitude,
+    #     lng: product.longitude,
+    #     info_window: render_to_string(partial: "info_window", locals: {product: product})
+    #   }
+    # end
   end
 
   def show
@@ -32,10 +33,9 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
     if @product.save!
-      redirect_to products_path
+      redirect_to product_path(@product)
     else
       render :new, status: :unprocessable_entity
-    end
   end
 
   def update
@@ -52,10 +52,11 @@ class ProductsController < ApplicationController
   end
 
 
-  private
+    private
 
 
-  def product_params
-    params.require(:friend_service).permit(:title, :description, :condition, :material, :price, :dimension, :location, :spotted, :photo, :latitude, :longitude )
+    def product_params
+      params.require(:friend_service).permit(:title, :description, :condition, :material, :price, :dimension, :location, :spotted, :photo, :latitude, :longitude )
+    end
   end
 end
