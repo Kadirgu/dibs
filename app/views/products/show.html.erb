@@ -1,6 +1,8 @@
 <div class="container">
   <%= link_to '← Go back', products_path, class: 'btn btn-primary btn-sm' %><br><br>
   <br><br>
+  <img src="https://www.heartmath.co.uk/wp-content/uploads/2018/05/placeholder-landscape.png" style="width: 100%;" alt="must be replaced with actual product img (cl_image_tag...)">
+  <br>
   <h1><%= @product.title %></h1>
   <h4><%= @product.description %></h4>
   <br><br>
@@ -12,6 +14,6 @@
   <p><strong>Spotted:</strong> <%= @product.spotted %></p>
   <br>
   <%= link_to 'Contact seller', products_path, class: 'btn btn-primary btn-sm' %><br><br>
-  <%= link_to 'Edit Product', products_path, class: 'btn btn-primary btn-sm' %><br><br>
-  <%= link_to 'Delete Product', products_path, class: 'btn btn-primary btn-sm' %>
+  <%= link_to 'Edit Product', edit_product_path(@product), class: 'btn btn-primary btn-sm' %>
+  <%= link_to 'Delete Product', product_path(@product), class: 'btn btn-danger btn-sm', data: {turbo_method: :delete, turbo_confirm: "Are you sure you?"} %>
 </div>

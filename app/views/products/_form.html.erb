@@ -2,8 +2,8 @@
   <%= f.input :photo, as: :file %>
   <%= f.input :title%>
   <%= f.input :description%>
-  <%= f.input :condition%>
-  <%= f.input :material%>
+  <%= f.input :condition, collection: ["New", "Good", "Used"]%>
+  <%= f.input :material, collection: ["Wood", "Leather", "Metal", "Iron", "Plastic", "Silk", "Cotton"]%>
   <%= f.input :price%>
   <%= f.input :dimension%>
   <%= f.input :location,

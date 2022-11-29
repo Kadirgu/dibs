@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Update <%=@product.title%></h1>
+  <br>
+  <%= link_to "← Go back", product_path(@product), class: 'btn btn-primary btn-sm'%>
+  <br><br>
+  <%= render "form", product: @product %>
+</div>

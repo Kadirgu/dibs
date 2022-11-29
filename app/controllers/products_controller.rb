@@ -37,6 +37,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
   def update
     @product = Product.find(params[:id])
     @product.update(product_params)
@@ -47,7 +51,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.destroy
     flash[:success] = "The product was successfully destroyed."
-    redirect_to product_path
+    redirect_to products_path
   end
 
   private
