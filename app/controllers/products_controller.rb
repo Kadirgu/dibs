@@ -30,9 +30,10 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
     if @product.save!
-      redirect_to product_path(@product)
+      redirect_to products_path(@product)
     else
       render :new, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -41,11 +42,11 @@ class ProductsController < ApplicationController
     redirect_to product_path
   end
 
-    def destroy
-      @product = Product.find(params[:id])
-      @product.destroy
-      flash[:success] = "The product was successfully destroyed."
-      redirect_to product_path
-    end
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    flash[:success] = "The product was successfully destroyed."
+    redirect_to product_path
   end
+
 end
