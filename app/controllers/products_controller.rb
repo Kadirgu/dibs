@@ -7,7 +7,6 @@ class ProductsController < ApplicationController
     else
       @product = Product.all
     end
-
     @markers = @products.geocoded.map do |product|
       {
         lat: product.latitude,
@@ -33,9 +32,10 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
     if @product.save!
-      redirect_to product_path(@product)
+      redirect_to products_path
     else
       render :new, status: :unprocessable_entity
+    end
   end
 
   def update
