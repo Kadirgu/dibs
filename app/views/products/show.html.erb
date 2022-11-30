@@ -1,11 +1,11 @@
 <div class="container">
   <%= link_to '← Go back', products_path, class: 'btn btn-primary btn-sm' %><br><br>
-  <br><br>
-  <img src="https://www.heartmath.co.uk/wp-content/uploads/2018/05/placeholder-landscape.png" style="width: 100%;" alt="must be replaced with actual product img (cl_image_tag...)">
   <br>
+  <%= cl_image_tag @product.photo.key, class: 'product-img' %>
+  <br><br>
   <h1><%= @product.title %></h1>
   <h4><%= @product.description %></h4>
-  <br><br>
+  <br>
   <p><strong>Condition:</strong> <%= @product.condition %></p>
   <p><strong>Material:</strong> <%= @product.material %></p>
   <p><strong>Price:</strong> <%= @product.price %></p>
