@@ -15,7 +15,6 @@ end
 20.times do
   Product.create(
     title: Faker::Lorem.sentence(word_count: 4),
-    image: nil,
     condition: ["New", "Good", "Old"].sample,
     user_id: rand(User.first.id..User.last.id),
     location: berlin_locations.sample,
