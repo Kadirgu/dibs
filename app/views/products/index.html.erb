@@ -1,20 +1,25 @@
 <div class="container">
-
   <div class="user-info">
     <div>
       <%= cl_image_tag @user.photo.key, class: 'user-img' %>
     </div>
     <div>
-      <h1>Welcome <%= @user.first_name %> 👋</h1>
+      <h2>Good morning👋<br><%= @user.first_name %> <%= @user.last_name %></h2>
     </div>
   </div>
 
-  <br>
-  Search field here?
-  Map here?
-  <br><br>
+  <div class="spotted">
+    <h2>Spotted</h2>
+    <p>Geomap here</p>
+  </div>
 
-  <div class="row">
+  <div class="categories">
+    <h2>Categories</h2>
+    <p>Categories here</p>
+  </div>
+
+  <div class="products row">
+    <h2>Most recent</h2>
     <% @products.each do |product| %>
       <div class="col-6">
         <%= link_to product_path(product) do %>
@@ -32,9 +37,6 @@
       </div>
     <% end %>
   </div>
-
-
-
-
+  
 </div>
 <%= render "layouts/footer" %>
