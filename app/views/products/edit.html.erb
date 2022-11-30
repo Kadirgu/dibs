@@ -3,8 +3,7 @@
     <%= link_to :back do %>
       <i class="fa fa-arrow-left"></i>
     <% end %>
-    <h2 class="site-navigation-title">Edit:<br><span style="font-weight: 300;"><%= @product.title %></span></h2>
+    <h2 class="site-navigation-title">Edit <%= @product.title %></h2>
   </div>
-  <br>
   <%= render "form", product: @product %>
 </div>
