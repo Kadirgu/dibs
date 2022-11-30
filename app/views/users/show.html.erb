@@ -1,0 +1,11 @@
+<h1>this is my profile</h1>
+
+<%= @user.first_name %>
+
+
+
+<ul>
+<% @my_products.each do |product| %>
+<li><%= product.title %></li>
+<% end %>
+</ul>
