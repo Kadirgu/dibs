@@ -1,6 +1,10 @@
 <div class="container">
-  <h1>Create a new Product</h1>
-  <%= link_to '← Go back', products_path, class: 'btn btn-primary btn-sm' %>
-  <br><br>
+  <div class="site-navigation">
+    <%= link_to products_path do %>
+      <i class="fa fa-arrow-left"></i>
+    <% end %>
+    <h2 class="site-navigation-title">Create a new Product</h2>
+  </div>
+
   <%= render "form", product: @product %>
 </div>
