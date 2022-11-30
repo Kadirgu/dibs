@@ -1,5 +1,6 @@
 .user-profile {
   margin-bottom: 35px;
+  text-align: center;
 
   .user-profile-img {
     width: 150px;
@@ -15,12 +16,11 @@
   .username {
     font-size: 24px !important;
     font-weight: 700 !important;
-    text-align: center;
   }
 
   .email {
     font-size: 16px !important;
     font-weight: 400 !important;
-    text-align: center;
+    margin-bottom: 25px;
   }
 }
