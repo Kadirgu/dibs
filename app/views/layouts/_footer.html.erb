@@ -1,10 +1,18 @@
 <div class="footer">
   <div class="container">
       <div class="footer-container">
-        <a href="/products"><i class="fa fa-home"></i></a>
-        <a href="#"><i class="fa fa-heart"></i></a>
-        <a href="/products/new"><i class="fa fa-plus-circle"></i></a>
-        <a href="#"><i class="fa fa-envelope"></i></a>
+        <%= link_to products_path do %>
+          <i class="fa fa-home"></i>
+        <% end %>
+        <%= link_to favorites_path do %>
+          <i class="fa fa-heart"></i>
+        <% end %>
+        <%= link_to new_product_path do %>
+          <i class="fa fa-plus-circle"></i>
+        <% end %>
+        <%= link_to products_path do %>
+          <i class="fa fa-envelope"></i>
+        <% end %>
         <a href="/users/show"><i class="fa fa-user"></i></a>
     </div>
   </div>
