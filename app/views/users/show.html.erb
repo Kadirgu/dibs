@@ -7,15 +7,15 @@
     <h2 class="site-navigation-title">Profile</h2>
   </div>
 
-
-  <% if @user.photo.key %>
-    <%= cl_image_tag @user.photo.key, class: 'user-profile-img'%>
-  <% else %>
-    <img class="user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
-  <% end %>
-  <h2 class="username"><%= @user.first_name %> <%= @user.last_name %></h2>
-  <h2 class="email"><%= @user.email %></h2>
-
+  <div class="user-profile">
+    <% if @user.photo.key %>
+      <%= cl_image_tag @user.photo.key, class: 'user-profile-img'%>
+    <% else %>
+      <img class="user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+    <% end %>
+    <h2 class="username"><%= @user.first_name %> <%= @user.last_name %></h2>
+    <h2 class="email"><%= @user.email %></h2>
+  </div>
 
   <div class="products row">
     <% @my_products.each do |product| %>
@@ -32,7 +32,9 @@
               <p class="product-price">$<%= product.price %></p>
             </div>
             <div class="favorite-button">
-              <a href="#"><i class="fa fa-heart"></i></a>
+              <%= link_to  edit_product_path(product) do %>
+                <i class="fa fa-pen"></i>
+              <% end %>
             </div>
           </div>
         <% end %>

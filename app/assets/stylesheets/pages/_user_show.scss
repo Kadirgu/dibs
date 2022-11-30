@@ -1,24 +1,26 @@
+.user-profile {
+  margin-bottom: 35px;
 
+  .user-profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 10px rgba(35,35,35,.2);
+    display: block;
+    object-fit: cover;
+    margin: auto;
+    margin-bottom: 15px !important;
+  }
 
-.user-profile-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  box-shadow: 0px 5px 10px rgba(35,35,35,.2);
-  display: block;
-  object-fit: cover;
-  margin: auto;
-  margin-bottom: 15px !important;
-}
+  .username {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    text-align: center;
+  }
 
-.username {
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  text-align: center;
-}
-
-.email {
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  text-align: center;
+  .email {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    text-align: center;
+  }
 }
