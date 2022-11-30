@@ -25,7 +25,11 @@
   <% if current_user %>
     <div class="user-info">
       <div>
-        <%= cl_image_tag @user.photo.key, class: 'user-img', cloud_name: :cloudinary %>
+      <% if @user.photo.key %>
+        <%= cl_image_tag @user.photo.key, class: 'user-img'%>
+      <% else %>
+        <img class="user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+      <% end %>
       </div>
       <div>
         <h2>Good morning👋<br><%= @user.first_name %> <%= @user.last_name %></h2>
@@ -54,7 +58,11 @@
       <div class="col-6">
         <%= link_to product_path(product) do %>
           <div class="product-card">
-            <%= cl_image_tag product.photo.key, class: 'product-img', cloud_name: :cloudinary %>
+          <% if product.photo.key %>
+            <%= cl_image_tag product.photo.key, class: 'product-img'%>
+          <% else %>
+            <img class="product-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+          <% end %>
             <div class="product-information">
               <h2 class="product-title"><%= product.title %></h2>
               <p class="product-price">$<%= product.price %></p>
