@@ -1,5 +1,17 @@
-<%= render "layouts/navbar" %>
 <div class="container">
+
+<div class="container"  id="product">
+  <h1 class="index-title">Dibs</h1>
+  <%= form_with url: product_path, method: :get, class: "d-flex search-field" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  <br><br><br>
+
   <h1>All Products</h1>
   <div class="container">
     <div style="width: 100%; height: 600px;"
@@ -11,21 +23,50 @@
   <%= link_to 'Create new Product ＋', new_product_path, class: 'btn btn-primary btn-sm' %>
   <br><br>
 
-  <div class="products-container">
+  <div class="user-info">
+    <div>
+      <%= cl_image_tag @user.photo.key, class: 'user-img' %>
+    </div>
+    <div>
+      <h2>Good morning👋<br><%= @user.first_name %> <%= @user.last_name %></h2>
+    </div>
+  </div>
+
+  <div class="search">
+    <h2>Search</h2>
+    <p>Search here</p>
+  </div>
+
+  <div class="spotted">
+    <h2>Spotted</h2>
+    <p>Geomap here</p>
+  </div>
+
+  <div class="categories">
+    <h2>Categories</h2>
+    <p>Categories here</p>
+  </div>
+
+  <div class="products row">
+    <h2>Most recent</h2>
     <% @products.each do |product| %>
-      <div class="product-card">
-        <p><strong>Title:</strong> <%= product.title %></p>
-        <p><strong>Describtion:</strong> <%= product.description %></p>
-        <p><strong>Condition:</strong> <%= product.condition %></p>
-        <p><strong>Material:</strong> <%= product.material %></p>
-        <p><strong>Price:</strong> <%= product.price %></p>
-        <p><strong>Dimension:</strong> <%= product.dimension %></p>
-        <p><strong>Location:</strong> <%= product.location %></p>
-        <p><strong>Spotted:</strong> <%= product.spotted %></p>
-        <%= link_to 'See Product', product_path(product), class: 'btn btn-primary btn-sm' %>
+      <div class="col-6">
+        <%= link_to product_path(product) do %>
+          <div class="product-card">
+            <%= cl_image_tag product.photo.key, class: 'product-img' %>
+            <div class="product-information">
+              <h2 class="product-title"><%= product.title %></h2>
+              <p class="product-price">$<%= product.price %></p>
+            </div>
+            <div class="favorite-button">
+              <a href="#"><i class="fa fa-heart"></i></a>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
+
 </div>
 
 <%= render "layouts/footer" %>

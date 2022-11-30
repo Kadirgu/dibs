@@ -11,9 +11,9 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
-
+  <body>
+    <div style="margin-bottom: 35px;"></div>
     <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
 </html>
