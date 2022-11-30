@@ -1,7 +1,7 @@
 User.destroy_all
 Product.destroy_all
 
-berlin_locations = ["Oranienstraße 122, 10969 ", "Wallstrasse 37, 53557", "Güntzelstrasse 7, 54298", "Kurfürstendamm 57, 18069", "Knesebeckstraße 89, 07426"]
+berlin_locations = ["Oranienstraße 122, 10969", "Wallstrasse 37, 53557", "Güntzelstrasse 7, 54298", "Kurfürstendamm 57, 18069", "Knesebeckstraße 89, 07426"]
 
 10.times do
   User.create(
