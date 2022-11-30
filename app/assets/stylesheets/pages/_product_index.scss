@@ -17,3 +17,16 @@
   height: 275px;
   object-fit: cover;
 }
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  .user-img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}

@@ -1,5 +1,14 @@
 <%= render "layouts/navbar" %>
 <div class="container">
+<div class="user-info">
+  <div>
+    <%= cl_image_tag @user.photo.key, class: 'user-img' %>
+  </div>
+  <div>
+    <h1>Welcome <%= @user.first_name %> 👋</h1>
+  </div>
+</div>
+<br><br>
   <h1>All Products</h1>
   <%= link_to 'Create new Product ＋', new_product_path, class: 'btn btn-primary btn-sm' %>
   <br><br>
