@@ -76,6 +76,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "pg_search"
 end
 
 gem "dotenv-rails", groups: [:development, :test]

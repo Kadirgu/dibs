@@ -1,4 +1,21 @@
 <div class="container">
+
+<div class="container"  id="product">
+  <h1 class="index-title">Dibs</h1>
+  <%= form_with url: product_path, method: :get, class: "d-flex search-field" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  <br><br><br>
+
+  <h1>All Products</h1>
+  <%= link_to 'Create new Product ＋', new_product_path, class: 'btn btn-primary btn-sm' %>
+  <br><br>
+  
   <div class="user-info">
     <div>
       <%= cl_image_tag @user.photo.key, class: 'user-img' %>
