@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def index
+    @user = current_user
     if params[:query] && !params[:query].empty?
       @products = Product.search_a_lot(params[:query])
     else

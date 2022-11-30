@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   resources :products do
     resources :favorites, only: [:new, :create, :destroy]
   end
-  resources :users
+  resources :users, only: [:show]
 end

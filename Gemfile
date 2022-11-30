@@ -78,3 +78,8 @@ group :test do
   gem "webdrivers"
   gem "pg_search"
 end
+
+gem "dotenv-rails", groups: [:development, :test]
+
+gem "cloudinary"
+
