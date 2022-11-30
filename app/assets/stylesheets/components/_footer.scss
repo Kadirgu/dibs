@@ -1,0 +1,18 @@
+.footer {
+  width: 100%;
+  border-top: 1px solid #000;
+  position: fixed;
+  background-color: #fff;
+  bottom: 0px;
+  padding: 12px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+
+  i {
+    color: #000;
+    font-size: 16px;
+  }
+}
