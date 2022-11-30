@@ -48,7 +48,7 @@ gem "sassc-rails"
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-
+gem "geocoder"
 gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.2.1"
