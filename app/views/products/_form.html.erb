@@ -1,5 +1,5 @@
 <%= simple_form_for(product) do |f| %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.input :title%>
   <%= f.input :description%>
   <%= f.input :condition, collection: ["New", "Good", "Used"]%>

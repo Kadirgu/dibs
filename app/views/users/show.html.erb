@@ -22,8 +22,10 @@
       <div class="col-6">
         <%= link_to product_path(product) do %>
           <div class="product-card">
-          <% if product.photo.key %>
-            <%= cl_image_tag product.photo.key, class: 'product-img'%>
+          <% if product.photos %>
+            <% product.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, class: 'product-img' %>
+            <% end %>
           <% else %>
             <img class="product-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
           <% end %>
