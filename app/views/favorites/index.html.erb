@@ -1,0 +1,19 @@
+
+<div class="products row">
+    <h2>My Favorites</h2>
+    <% @favorites.each do |fav| %>
+      <div class="col-6">
+        <%= link_to product_path(fav) do %>
+          <div class="product-card">
+            <div class="product-information">
+              <h2 class="product-title"><%= fav.product.title %></h2>
+              <p class="product-price">$<%= fav.product.price %></p>
+            </div>
+            <div class="favorite-button">
+              <a href="#"><i class="fa fa-heart"></i></a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>

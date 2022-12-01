@@ -44,30 +44,31 @@
       <p>Categories here</p>
     </div>
 
-    <div class="products row">
-      <h2>Most recent</h2>
-      <% @products.each do |product| %>
-        <div class="col-6">
-          <%= link_to product_path(product) do %>
-            <div class="product-card">
-            <% if product.photos %>
-              <% product.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, class: 'product-img' %>
-              <% end %>
-            <% else %>
-              <img class="product-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
-            <% end %>
-              <div class="product-information">
-                <h2 class="product-title"><%= product.title %></h2>
-                <p class="product-price">$<%= product.price %></p>
-              </div>
+  <div class="products row">
+    <h2>Most recent</h2>
+    <% @products.each do |product| %>
+      <div class="col-6">
+        <%= link_to product_path(product) do %>
+          <div class="product-card">
+          <% if product.photo.key %>
+            <%= cl_image_tag product.photo.key, class: 'product-img'%>
+          <% else %>
+            <img class="product-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+          <% end %>
+            <div class="product-information">
+              <h2 class="product-title"><%= product.title %></h2>
+              <p class="product-price">$<%= product.price %></p>
+            </div>
+            <% if Favorite.where(product_id: product.id, user_id: current_user).any? %>
               <div class="favorite-button">
                 <a href="#"><i class="fa fa-heart"></i></a>
               </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
 
   </div>
