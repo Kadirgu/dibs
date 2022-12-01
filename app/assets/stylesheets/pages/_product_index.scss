@@ -75,6 +75,11 @@
   aspect-ratio: 1;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  display: none;
+}
+
+.product-img:first-child {
+  display: block;
 }
 
 .favorite-button {

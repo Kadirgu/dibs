@@ -9,13 +9,9 @@
   <% if @user.photo.key %>
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <%= cl_image_tag @product.photos[0].key, class: 'product-img' %>
-      </div>
-
-      <% @product.photos.each do |photo| %>
-        <div class="carousel-item">
-          <%= cl_image_tag photo.key, class: 'product-img' %>
+      <% @product.photos.each.with_index do |photo, index| %>
+        <div class="carousel-item <%= index == 0 ? 'active' : '' %> carousel-img">
+          <%= cl_image_tag photo.key %>
         </div>
       <% end %>
     </div>
