@@ -10,6 +10,7 @@ export default class extends Controller {
   }
 
   connect() {
+    console.log("stimulus controller connected")
     console.log(this.apiKey)
     mapboxgl.accessToken = this.apiKeyValue
 

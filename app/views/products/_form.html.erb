@@ -1,5 +1,5 @@
 <%= simple_form_for(product) do |f| %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.input :title%>
   <%= f.input :description%>
   <%= f.input :condition, collection: ["New", "Good", "Used"]%>
@@ -7,9 +7,11 @@
   <%= f.input :price%>
   <%= f.input :dimension%>
   <%= f.input :location,
-      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+      input_html: {data: {address_autocomplete_target: "address"} },
       wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
     %>
   <%= f.input :spotted%>
   <%= f.submit class: 'button' %>
 <% end %>
+
+  <%=  %>
