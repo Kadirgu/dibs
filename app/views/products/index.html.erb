@@ -16,22 +16,7 @@
       </div>
     <% end %>
 
-
-    <%= form_with url: products_path, method: :get, class: "d-flex search-field" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Search"
-      %>
-      <%= submit_tag "Search", class: "button" %>
-      <% end %>
-
-
-
-
-
     <div class="spotted">
-      <h2>Spotted</h2>
       <div class="spotted-map"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
@@ -39,36 +24,41 @@
       </div>
     </div>
 
-    <div class="categories">
-      <h2>Categories</h2>
-      <p>Categories here</p>
+    <div class="search">
+        <%= form_with url: products_path, method: :get, class: "d-flex search-field" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search"
+      %>
+      <%= submit_tag "Search", class: "button" %>
+      <% end %>
     </div>
 
-  <div class="products row">
-    <h2>Most recent</h2>
-    <% @products.each do |product| %>
-      <div class="col-6">
-        <%= link_to product_path(product) do %>
-          <div class="product-card">
-          <% if product.photo.key %>
-            <%= cl_image_tag product.photo.key, class: 'product-img'%>
-          <% else %>
-            <img class="product-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
-          <% end %>
-            <div class="product-information">
-              <h2 class="product-title"><%= product.title %></h2>
-              <p class="product-price">$<%= product.price %></p>
-            </div>
-            <% if Favorite.where(product_id: product.id, user_id: current_user).any? %>
+    <div class="products row">
+      <h2>Most recent</h2>
+      <% @products.each do |product| %>
+        <div class="col-6">
+          <%= link_to product_path(product) do %>
+            <div class="product-card">
+              <% if product.photos.count != 0 %>
+                <% product.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, class: 'product-img' %>
+                <% end %>
+              <% else %>
+                <img class="product-show-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+              <% end %>
+              <div class="product-information">
+                <h2 class="product-title"><%= product.title %></h2>
+                <p class="product-price">$<%= product.price %></p>
+              </div>
               <div class="favorite-button">
                 <a href="#"><i class="fa fa-heart"></i></a>
               </div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 
   </div>
