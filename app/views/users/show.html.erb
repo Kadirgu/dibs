@@ -1,11 +1,46 @@
-<h1>this is my profile</h1>
+<div class="container">
+  <div class="site-navigation">
+    <%= link_to products_path do %>
+      <i class="fa fa-arrow-left"></i>
+    <% end %>
+    <h2 class="site-navigation-title">Profile</h2>
+  </div>
 
-<%= @user.first_name %>
+  <div class="user-profile">
+    <% if @user.photo.key %>
+      <%= cl_image_tag @user.photo.key, class: 'user-profile-img'%>
+    <% else %>
+      <img class="user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+    <% end %>
+    <h2 class="username"><%= @user.first_name %> <%= @user.last_name %></h2>
+    <h2 class="email"><%= @user.email %></h2>
+    <%= link_to 'Edit Profile', edit_user_registration_path(@user), class: 'button'%>
+  </div>
+
+  <div class="products row">
+    <% @my_products.each do |product| %>
+      <div class="col-6">
+        <%= link_to product_path(product) do %>
+          <div class="product-card">
+          <% if product.photo.key %>
+            <%= cl_image_tag product.photo.key, class: 'product-img'%>
+          <% else %>
+            <img class="product-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+          <% end %>
+            <div class="product-information">
+              <h2 class="product-title"><%= product.title %></h2>
+              <p class="product-price">$<%= product.price %></p>
+            </div>
+            <div class="favorite-button">
+              <%= link_to  edit_product_path(product) do %>
+                <i class="fa fa-pen"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
 
-
-<ul>
-<% @my_products.each do |product| %>
-<li><%= product.title %></li>
-<% end %>
-</ul>
+</div>

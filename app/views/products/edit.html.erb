@@ -1,7 +1,9 @@
 <div class="container">
-  <h1>Update <%=@product.title%></h1>
-  <br>
-  <%= link_to "← Go back", product_path(@product), class: 'btn btn-primary btn-sm'%>
-  <br><br>
+  <div class="site-navigation">
+    <%= link_to :back do %>
+      <i class="fa fa-arrow-left"></i>
+    <% end %>
+    <h2 class="site-navigation-title">Edit <%= @product.title %></h2>
+  </div>
   <%= render "form", product: @product %>
 </div>

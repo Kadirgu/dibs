@@ -10,16 +10,20 @@ a {
   text-decoration: none !important;
 }
 
+a:hover {
+  color:#fff !important;
+}
+
 h2 {
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   font-size: 16px !important;
 }
 
 p {
-  font-weight: 300 !important;
+  font-weight: 400 !important;
   font-size: 14px !important;
 }
 
 b, strong {
-  font-weight: 600 !important;
+  font-weight: 700 !important;
 }

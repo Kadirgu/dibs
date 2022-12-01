@@ -1,0 +1,16 @@
+.site-navigation {
+  display: flex;
+  gap: 35px;
+  align-items: baseline;
+  margin-bottom: 15px;
+
+  i {
+    color: #000;
+    font-size: 24px;
+  }
+}
+
+.site-navigation-title {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+}

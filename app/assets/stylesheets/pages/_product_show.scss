@@ -4,3 +4,35 @@
   aspect-ratio: 1;
   object-fit: cover;
 }
+
+.product-show-title {
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  max-width: 90%;
+}
+
+.product-show-title-container, .product-show-price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.product-show-favorite-button {
+  width: 35px;
+  display: flex;
+  height: 35px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    color: #000;
+  }
+}
+
+.price {
+  font-weight: 700 !important;
+  font-size: 30px !important;
+  margin-top: -15px;
+}
