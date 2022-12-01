@@ -59,9 +59,11 @@
               <h2 class="product-title"><%= product.title %></h2>
               <p class="product-price">$<%= product.price %></p>
             </div>
-            <div class="favorite-button">
-              <a href="#"><i class="fa fa-heart"></i></a>
-            </div>
+            <% if Favorite.where(product_id: product.id, user_id: current_user).any? %>
+              <div class="favorite-button">
+                <a href="#"><i class="fa fa-heart"></i></a>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>

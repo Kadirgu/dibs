@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :messages
   has_many :chats
+  has_many :favorites
 end
