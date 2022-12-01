@@ -48,7 +48,7 @@
       <p>Total price</p>
       <p class="price">$<%= @product.price %>.00</p>
     </div>
-    <%= link_to 'Message', products_path, class: 'button button-large' %>
+    <%= link_to 'Message', product_chatrooms_path(@product), class: 'button button-large', data: { turbo_method: :post }%>
   </div>
 
   <%= link_to 'Edit Product', edit_product_path(@product), class: 'button' %>
