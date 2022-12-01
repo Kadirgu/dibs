@@ -8,7 +8,7 @@
 
   <div class="user-profile">
     <% if @user.photo.key %>
-      <%= cl_image_tag @user.photo.key, class: 'user-profile-img', cloudname: 'cloudinary'%>
+      <%= cl_image_tag @user.photo.key, class: 'user-profile-img'%>
     <% else %>
       <img class="user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
     <% end %>
