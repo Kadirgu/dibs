@@ -42,9 +42,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_103414) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "chats", force: :cascade do |t|
+  create_table "chatrooms", force: :cascade do |t|
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_chatrooms_on_product_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -58,8 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_103414) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -96,6 +102,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_103414) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "products"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
 end
