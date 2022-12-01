@@ -25,3 +25,36 @@ end
     spotted: [true,false].sample
   )
 end
+
+# users = User.all
+# products = Product.all
+
+# users.each do |u|
+#   products.sample(3) do |p|
+#     Favorite.create!(user_id: u.id, product_id: p.id)
+#   end
+# end
+
+user = User.create(
+  email: "#{Faker::Name.first_name}@gmail.com",
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  password: "123456"
+)
+
+product = Product.create!(
+  title: Faker::Lorem.sentence(word_count: 4),
+  condition: ["New", "Good", "Old"].sample,
+  user_id: rand(User.first.id..User.last.id),
+  location: berlin_locations.sample,
+  description: Faker::Lorem.sentence(word_count: 50),
+  material: ["Leather", "Metal", "Wood", "Plastic", "Silk", "Cotton"].sample,
+  dimension: rand(2..10),
+  price: rand(10..500),
+  spotted: [true,false].sample
+)
+
+Favorite.create!(
+  user_id: user.id,
+  product_id: product.id
+)
