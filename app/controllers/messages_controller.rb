@@ -16,6 +16,4 @@ class MessagesController < ApplicationController
     redirect_to messages_path
   end
 
-  
-
 end
