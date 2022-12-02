@@ -10,6 +10,7 @@
   font-weight: 700 !important;
   font-size: 24px !important;
   max-width: 90%;
+  text-transform: capitalize;
 }
 
 .product-show-title-container {
@@ -52,4 +53,12 @@
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  opacity: 1;
+}
+
+.carousel-item {
+  transition: none;
 }

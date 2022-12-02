@@ -5,14 +5,26 @@
     <% end %>
     <div class="product-show-edit-nav">
       <h2 class="site-navigation-title">Go back</h2>
-      <%= link_to edit_product_path(@product) do %>
-        <i class="fa fa-pen"></i>
+
+      <% if current_user.id == @product.user.id %>
+        <%= link_to edit_product_path(@product) do %>
+          <i class="fa fa-pen"></i>
+        <% end %>
       <% end %>
+
+
     </div>
   </div>
 
   <% if @user.photo.key %>
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+  <ol class="carousel-indicators">
+      <% @product.photos.each.with_index do |photo, index| %>
+    <li data-target="#carouselExampleIndicators" data-slide-to="<% index %>" class="<%= index == 0 ? 'active' : ''%>"></li>
+  <% end %>
+  </ol>
+
     <div class="carousel-inner">
       <% @product.photos.each.with_index do |photo, index| %>
         <div class="carousel-item <%= index == 0 ? 'active' : '' %> carousel-img">
@@ -56,9 +68,13 @@
       <p>Total price</p>
       <p class="price"><%= @product.price %> €</p>
     </div>
-    <%= link_to product_chatrooms_path(@product), class: 'button button-large', data: { turbo_method: :post } do %>
-      <i class="fa fa-envelope"></i> Message
+
+    <% if current_user.id != @product.user.id %>
+      <%= link_to product_chatrooms_path(@product), class: 'button button-large', data: { turbo_method: :post } do %>
+        <i class="fa fa-envelope"></i> Message
+      <% end %>
     <% end %>
+
   </div>
   <hr>
   <div class="spotted-map"
