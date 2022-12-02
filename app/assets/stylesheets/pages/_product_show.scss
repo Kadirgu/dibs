@@ -53,3 +53,11 @@
   object-fit: cover;
   border-radius: 8px;
 }
+
+.carousel-control-prev, .carousel-control-next {
+  opacity: 1;
+}
+
+.carousel-item {
+  transition: none;
+}
