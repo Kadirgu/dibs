@@ -18,12 +18,13 @@
 
   <% if @user.photo.key %>
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-
-  <ol class="carousel-indicators">
-      <% @product.photos.each.with_index do |photo, index| %>
-    <li data-target="#carouselExampleIndicators" data-slide-to="<% index %>" class="<%= index == 0 ? 'active' : ''%>"></li>
-  <% end %>
-  </ol>
+    <% if @product.photos.count > 1 %>
+      <ol class="carousel-indicators">
+          <% @product.photos.each.with_index do |photo, index| %>
+        <li data-target="#carouselExampleIndicators" data-slide-to="<% index %>" class="<%= index == 0 ? 'active' : ''%>"></li>
+      <% end %>
+      </ol>
+    <% end %>
 
     <div class="carousel-inner">
       <% @product.photos.each.with_index do |photo, index| %>
