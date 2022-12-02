@@ -25,6 +25,14 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @favorite = Favorite.new
     @user = @product.user
+    @products = Product.all
+    @markers = @products.geocoded.map do |product|
+      {
+        lat: product.latitude,
+        lng: product.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {product: product})
+      }
+    end
   end
 
   def create
