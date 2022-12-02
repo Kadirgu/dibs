@@ -15,6 +15,7 @@
     <h2 class="username"><%= @user.first_name %> <%= @user.last_name %></h2>
     <h2 class="email"><%= @user.email %></h2>
     <%= link_to 'Edit Profile', edit_user_registration_path(@user), class: 'button'%>
+    <%= link_to 'Logout', destroy_user_session_path(@user), class: 'button secondary'%>
   </div>
 
   <div class="products row">
@@ -31,7 +32,7 @@
           <% end %>
             <div class="product-information">
               <h2 class="product-title"><%= product.title %></h2>
-              <p class="product-price">$<%= product.price %></p>
+              <p class="product-price"><%= product.price %> €</p>
             </div>
             <div class="favorite-button">
               <%= link_to  edit_product_path(product) do %>

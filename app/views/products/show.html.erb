@@ -1,9 +1,14 @@
 <div class="container">
   <div class="site-navigation">
-    <%= link_to :back do %>
+    <%= link_to products_path do %>
       <i class="fa fa-arrow-left"></i>
     <% end %>
-    <h2 class="site-navigation-title">Go back</h2>
+    <div class="product-show-edit-nav">
+      <h2 class="site-navigation-title">Go back</h2>
+      <%= link_to edit_product_path(@product) do %>
+        <i class="fa fa-pen"></i>
+      <% end %>
+    </div>
   </div>
 
   <% if @user.photo.key %>
@@ -15,14 +20,17 @@
         </div>
       <% end %>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+
+    <% if @product.photos.count > 1 %>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      <% end %>
   </div>
 
   <% else %>
@@ -40,17 +48,22 @@
   <p><strong>Description:</strong><br><%= @product.description %></p>
   <p><strong>Condition:</strong><br><%= @product.condition %></p>
   <p><strong>Material:</strong><br><%= @product.material %></p>
-  <p><strong>Dimension:</strong><br><%= @product.dimension %></p>
+  <p><strong>Dimension:</strong><br><%= @product.dimension %> cm</p>
   <p><strong>Location:</strong><br><%= @product.location %></p>
   <hr>
   <div class="product-show-price-container">
     <div class="product-price">
       <p>Total price</p>
-      <p class="price">$<%= @product.price %>.00</p>
+      <p class="price"><%= @product.price %> €</p>
     </div>
-    <%= link_to 'Message', product_chatrooms_path(@product), class: 'button button-large', data: { turbo_method: :post }%>
+    <%= link_to product_chatrooms_path(@product), class: 'button button-large', data: { turbo_method: :post } do %>
+      <i class="fa fa-envelope"></i> Message
+    <% end %>
   </div>
-
-  <%= link_to 'Edit Product', edit_product_path(@product), class: 'button' %>
-  <%= link_to 'Delete Product', product_path(@product), class: 'button', data: {turbo_method: :delete, turbo_confirm: "Are you sure you?"} %>
+  <hr>
+  <div class="spotted-map"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
