@@ -2,6 +2,7 @@
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.input :title%>
   <%= f.input :description%>
+  <%= f.input :category, collection: ["Kitchen", "Living Room", "Office", "Bathroom", "Bedroom", "Dining Room", "Garden", "Other"]%>
   <%= f.input :condition, collection: ["New", "Good", "Used"]%>
   <%= f.input :material, collection: ["Wood", "Leather", "Metal", "Iron", "Plastic", "Silk", "Cotton"]%>
   <%= f.input :price, placeholder: '0.00 €'%>

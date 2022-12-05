@@ -13,8 +13,12 @@
         <%= link_to products_path do %>
           <i class="fa fa-envelope"></i>
         <% end %>
-        <% if current_user %>
+        <% if user_signed_in? %>
           <%= link_to user_path(current_user) do %>
+            <i class="fa fa-user"></i>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
             <i class="fa fa-user"></i>
           <% end %>
         <% end %>
