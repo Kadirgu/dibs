@@ -20,3 +20,7 @@
 
 @import "pages/session_new";
 @import "pages/chatrooms";
+
+html {
+  scroll-behavior: auto !important;
+}
