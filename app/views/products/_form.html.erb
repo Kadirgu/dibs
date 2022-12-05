@@ -2,8 +2,8 @@
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.input :title%>
   <%= f.input :description%>
-  <%= f.input :category, collection: ["Kitchen", "Living Room", "Office", "Bathroom", "Bedroom", "Dining Room", "Garden", "Other"]%>
-  <%= f.input :condition, collection: ["New", "Good", "Used"]%>
+  <%= f.input :category, collection: Product::CATEGORIES%>
+  <%= f.input :condition, collection: Product::CONDITIONS%>
   <%= f.input :material, collection: ["Wood", "Leather", "Metal", "Iron", "Plastic", "Silk", "Cotton"], input_html: { multiple: true, class: "multiple-select"}, include_hidden: false%>
   <%= f.input :price, placeholder: '0.00 €'%>
   <%= f.input :dimension, placeholder: '100x50x25'%>
@@ -14,5 +14,3 @@
   <%= f.input :spotted%>
   <%= f.submit class: 'button' %>
 <% end %>
-
-  <%=  %>
