@@ -9,14 +9,21 @@
   <div class="products row">
       <% @favorites.each do |fav| %>
         <div class="col-6">
-          <%= link_to product_path(fav) do %>
+          <%= link_to product_path(fav.product) do %>
             <div class="product-card">
+            <% if fav.product.photos.count != 0 %>
+                <% fav.product.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, class: 'product-img' %>
+                <% end %>
+                <% else %>
+                <img class="product-show-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+              <% end %>
               <div class="product-information">
                 <h2 class="product-title"><%= fav.product.title %></h2>
                 <p class="product-price">$<%= fav.product.price %></p>
               </div>
               <div class="favorite-button">
-                <%= link_to favorite_path(fav), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <%= link_to product_path(fav.product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
                   <i class="fa-solid fa-trash-can"></i>
                 <% end %>
               </div>
