@@ -16,14 +16,6 @@
       </div>
     <% end %>
 
-    <div class="spotted">
-      <div class="spotted-map"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div>
-
     <div class="search">
         <%= form_with url: products_path, method: :get, class: "d-flex search-field" do %>
       <%= text_field_tag :query,
@@ -35,8 +27,11 @@
       <% end %>
     </div>
 
+    <div class="cateogires">
+      
+    </div>
+
     <div class="products row">
-      <h2>Most recent</h2>
       <% @products.each do |product| %>
         <div class="col-6">
           <%= link_to product_path(product) do %>
