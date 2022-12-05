@@ -83,4 +83,16 @@
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+  <hr>
+  <div class="product-show-user-info">
+    <div class="product-show-user-titles">
+      <%= cl_image_tag @product.user.photo.key, class: 'product-show-user-img' %>
+      <h2 class="user-profile-title"><%= @product.user.first_name %> <%= @product.user.last_name %> <br> <span>Vendor</span></h2>
+    </div>
+    <div>
+      <%= link_to user_path(@product.user) do %>
+        <i class="fa fa-arrow-right user-arrow"></i>
+      <% end %>
+    </div>
+  </div>
 </div>
