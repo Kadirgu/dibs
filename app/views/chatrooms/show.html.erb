@@ -1,4 +1,5 @@
 <div class="container">
+<h1>My Messages</h1>
   <%= simple_form_for [@chatroom, @message],
     html: {class: "d-flex"} do |f|
   %>
@@ -7,6 +8,9 @@
       placeholder: "Message ##{@chatroom.product.title}",
       wrapper_html: {class: "flex-grow-1"}
     %>
+
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>
+
+  <%= link_to '← Go back', products_path, class: 'btn btn-primary btn-sm' %>
 </div>

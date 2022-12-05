@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
 
   def index
-    @chatrooms = Chatroom.joins(:messages).where("user = ?", current_user)
+    @chatrooms = Chatroom.where(user: current_user)
   end
 
   def show
@@ -15,12 +15,12 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find_by(product: params[:product_id], user_id: current_user.id)
     if @chatroom.nil?
       @chatroom = Chatroom.create(product: @product, user_id: current_user.id)
+      @message = Message.new
       render "chatrooms/show", status: :unprocessable_entity
     else
       redirect_to chatroom_path(@chatroom)
     end
   end
-
 
   # def destroy
   #   @chat = Chatroom.find(params[:id])

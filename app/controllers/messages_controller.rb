@@ -9,13 +9,28 @@ class MessagesController < ApplicationController
     @user = @product.message
   end
 
+  def create
+    @chatroom = Chatroom.find(params[:chatroom_id])
+    @message = Message.new(message_params)
+    @message.chatroom = @chatroom
+    @message.user = current_user
+    if @message.save
+      redirect_to chatroom_path(@chatroom)
+    else
+      render "chatrooms/show", status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @message = Message.find(params[:id])
     @message.destroy
     flash[:success] = "The message was successfully deleted."
     redirect_to messages_path
   end
-
   
+  private
 
+  def message_params
+    params.require(:message).permit(:content)
+  end
 end
