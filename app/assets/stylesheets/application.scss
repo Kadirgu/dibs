@@ -19,3 +19,7 @@
 @import "pages/user_show";
 
 @import "pages/session_new";
+
+html {
+  scroll-behavior: auto !important;
+}
