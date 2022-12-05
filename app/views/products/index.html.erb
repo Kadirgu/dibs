@@ -28,25 +28,6 @@
             </div>
           <% end %>
         </div>
-
-        <div class="search-filter">
-          <% Product::CONDITIONS.each do |condition|%>
-            <div class="button secondary filter-search-button">
-              <%= label_tag condition %>
-              <%= check_box_tag 'conditions[]', condition %>
-            </div>
-          <% end %>
-        </div>
-
-        <div class="search-filter">
-          <% Product::MATERIALS.each do |material|%>
-            <div class="button secondary filter-search-button">
-              <%= label_tag material %>
-              <%= check_box_tag 'materials[]', material %>
-            </div>
-          <% end %>
-        </div>
-
         <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
@@ -87,3 +68,15 @@
   </div>
 
 
+<script>
+
+checkboxes = document.querySelectorAll('.filter-search-button input')
+
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('click', (event) => {
+  event.currentTarget.parentElement.classList.toggle('secondary')
+  console.log("test")
+})
+})
+
+</script>

@@ -28,6 +28,8 @@
   align-items: center;
   gap: 15px;
   margin: 15px 0px;
+  overflow-x: scroll;
+
 
   label {
     margin-bottom: 0;
@@ -43,12 +45,16 @@
       top: 0 !important;
       left: 0 !important;
     }
+
   }
 }
 input[type="checkbox" i]  {
   background-color: transparent;
   appearance: initial;
 }
+
+
+
 
 /*SPOTTED*/
 .spotted {
