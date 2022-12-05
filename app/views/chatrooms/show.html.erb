@@ -1,16 +1,25 @@
-<div class="container">
-<h1>My Messages</h1>
-  <%= simple_form_for [@chatroom, @message],
-    html: {class: "d-flex"} do |f|
+<div class="container chatroom"
+  data-controller="chatroom-subscription"
+  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+>
+
+  <div class="messages" data-chatroom-subscription-target="messages">
+    <% @chatroom.messages.each do |message| %>
+    <%= render "message", message: message %>
+    <% end %>
+  </div>
+
+<h1><%= @chatroom.product.title %></h1>
+  <%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
   %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message ##{@chatroom.product.title}",
+      placeholder: "Message ##{@chatroom.user.first_name}",
       wrapper_html: {class: "flex-grow-1"}
     %>
 
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <%= f.submit "Send", class: "button" %>
   <% end %>
 
-  <%= link_to '← Go back', products_path, class: 'btn btn-primary btn-sm' %>
+  <%= link_to '← Go back', products_path, class: "button" %>
 </div>
