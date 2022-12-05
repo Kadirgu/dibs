@@ -21,6 +21,7 @@
   </div>
 
   <div class="products row">
+  <% if @my_products.count != 0 %>
     <% @my_products.each do |product| %>
       <div class="col-6">
         <%= link_to product_path(product) do %>
@@ -47,6 +48,9 @@
         <% end %>
       </div>
     <% end %>
+  <% else %>
+  <p style="text-align: center;">You haven't published any products yet.</p>
+  <% end %>
   </div>
 
 
