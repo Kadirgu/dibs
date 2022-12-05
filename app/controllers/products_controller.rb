@@ -7,8 +7,17 @@ class ProductsController < ApplicationController
 
   def index
     @user = current_user
-    if params[:query] && !params[:query].empty?
-      @products = Product.search_a_lot(params[:query])
+    if params[:query] || params[:categories]
+      @products = []
+      if params[:query] && !params[:query].empty?
+        @products << Product.search_a_lot(params[:query])
+      end
+      if params[:categories]
+        params[:categories].each do |cat|
+          @products << Product.search_a_lot(cat.downcase)
+        end
+      end
+      return @products
     else
       @products = Product.all
     end
@@ -20,7 +29,7 @@ class ProductsController < ApplicationController
       }
     end
 
-    
+
   end
 
   def show

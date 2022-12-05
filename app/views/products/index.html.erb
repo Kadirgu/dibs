@@ -36,7 +36,7 @@
 
     <div class="products row">
       <% @products.each do |product| %>
-        <%= content_tag :div, class: "col-6", id: dom_id(product) do %> <!-- Sebi tried to get anchors working -->
+        <%= content_tag :div, class: "col-6", id: "dom_id(product)" do %> <!-- Sebi tried to get anchors working -->
           <%= link_to product_path(product) do %>
             <div class="product-card">
               <% if product.photos.count != 0 %>
@@ -74,8 +74,7 @@ checkboxes = document.querySelectorAll('.filter-search-button input')
 
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('click', (event) => {
-  event.currentTarget.parentElement.classList.toggle('secondary')
-  console.log("test")
+    event.currentTarget.parentElement.classList.toggle('secondary')
 })
 })
 
