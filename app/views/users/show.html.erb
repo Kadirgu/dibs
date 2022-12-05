@@ -25,7 +25,7 @@
       <div class="col-6">
         <%= link_to product_path(product) do %>
           <div class="product-card">
-          <% if product.photos %>
+          <% if product.photos.count != 0 %>
             <% product.photos.each do |photo| %>
                 <%= cl_image_tag photo.key, class: 'product-img' %>
             <% end %>
@@ -36,11 +36,13 @@
               <h2 class="product-title"><%= product.title %></h2>
               <p class="product-price"><%= product.price %> €</p>
             </div>
-            <div class="favorite-button">
-              <%= link_to  edit_product_path(product) do %>
-                <i class="fa fa-pen"></i>
-              <% end %>
-            </div>
+            <% if @user.id == current_user.id %>
+              <div class="favorite-button">
+                <%= link_to  edit_product_path(product) do %>
+                  <i class="fa fa-pen"></i>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
