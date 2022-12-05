@@ -14,10 +14,10 @@
     <% end %>
     <h2 class="username"><%= @user.first_name %> <%= @user.last_name %></h2>
     <h2 class="email"><%= @user.email %></h2>
-    <% if @user.id == current_user.id %>
-      <%= link_to 'Edit Profile', edit_user_registration_path, class: 'button'%>
-      <%= link_to 'Logout', destroy_user_session_path, class: 'button secondary', data: {turbo_method: :delete}%>
-    <% end %>
+      <% if @user.id == current_user.id %>
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: 'button'%>
+        <%= link_to 'Logout', destroy_user_session_path, class: 'button secondary', data: {turbo_method: :delete}%>
+      <% end %>
   </div>
 
   <div class="products row">
