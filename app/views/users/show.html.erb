@@ -10,12 +10,14 @@
     <% if @user.photo.key %>
       <%= cl_image_tag @user.photo.key, class: 'user-profile-img'%>
     <% else %>
-      <img class="user-img" src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="">
+      <img class="user-profile-img" src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="">
     <% end %>
     <h2 class="username"><%= @user.first_name %> <%= @user.last_name %></h2>
     <h2 class="email"><%= @user.email %></h2>
-    <%= link_to 'Edit Profile', edit_user_registration_path, class: 'button'%>
-    <%= link_to 'Logout', destroy_user_session_path, class: 'button secondary', data: {turbo_method: :delete}%>
+    <% if @user.id == current_user.id %>
+      <%= link_to 'Edit Profile', edit_user_registration_path, class: 'button'%>
+      <%= link_to 'Logout', destroy_user_session_path, class: 'button secondary', data: {turbo_method: :delete}%>
+    <% end %>
   </div>
 
   <div class="products row">
