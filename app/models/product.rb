@@ -9,7 +9,7 @@ class Product < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_a_lot,
-    against: [ :location, :title, :description, :image, :price, :material, :condition, :user_id ],
+    against: [ :location, :title, :description, :image, :price, :material, :condition, :user_id, :category ],
     using: {
       tsearch: { prefix: true }
   }

@@ -7,11 +7,22 @@ class ProductsController < ApplicationController
 
   def index
     @user = current_user
-    if params[:query] && !params[:query].empty?
-      @products = Product.search_a_lot(params[:query])
+    if params[:query] || params[:categories]
+      @search_products = []
+      if params[:query]
+        @search_products << Product.search_a_lot(params[:query])
+      end
+      if params[:categories]
+        params[:categories].each do |cat|
+          @search_products << Product.search_a_lot(cat.downcase)
+        end
+      end
+      @products = @search_products.flatten
+      return @products
     else
       @products = Product.all
     end
+
     @markers = @products.geocoded.map do |product|
       {
         lat: product.latitude,
@@ -19,8 +30,6 @@ class ProductsController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: {product: product})
       }
     end
-
-    
   end
 
   def show
