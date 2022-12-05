@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
   has_many :favorites, dependent: :destroy
-  has_many :chatrooms, dependet: :destroy
+  has_many :chatrooms, dependent: :destroy
   CATEGORIES = ["Kitchen", "Livingroom", "Office", "Bathroom", "Bedroom", "Dining Room", "Garden", "Other"]
   CONDITIONS = ["New", "Good", "Used"]
   MATERIALS = ["Metal", "Wood", "Leather", "Silk", "Cotton", "Plastic"]
