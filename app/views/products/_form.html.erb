@@ -3,7 +3,7 @@
   <%= f.input :title%>
   <%= f.input :description%>
   <%= f.input :condition, collection: ["New", "Good", "Used"]%>
-  <%= f.input :material, collection: ["Wood", "Leather", "Metal", "Iron", "Plastic", "Silk", "Cotton"]%>
+  <%= f.input :material, collection: ["Wood", "Leather", "Metal", "Iron", "Plastic", "Silk", "Cotton"], input_html: { multiple: true, class: "multiple-select"}, include_hidden: false%>
   <%= f.input :price, placeholder: '0.00 €'%>
   <%= f.input :dimension, placeholder: '100x50x25'%>
   <%= f.input :location, placeholder: 'Oranienstraße 6, Berlin',
