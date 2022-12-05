@@ -6,7 +6,7 @@
     <div class="product-show-edit-nav">
       <h2 class="site-navigation-title">Go back</h2>
 
-      <% if current_user.id == @product.user.id %>
+      <% if @user.id == @product.user.id %>
         <%= link_to edit_product_path(@product) do %>
           <i class="fa fa-pen"></i>
         <% end %>
@@ -70,7 +70,7 @@
       <p class="price"><%= @product.price %> €</p>
     </div>
 
-    <% if current_user.id != @product.user.id %>
+    <% if @user.id != @product.user.id %>
       <%= link_to product_chatrooms_path(@product), class: 'button button-large', data: { turbo_method: :post } do %>
         <i class="fa fa-envelope"></i> Message
       <% end %>
@@ -86,7 +86,11 @@
   <hr>
   <div class="product-show-user-info">
     <div class="product-show-user-titles">
-      <%= cl_image_tag @product.user.photo.key, class: 'product-show-user-img' %>
+      <% if @product.user.photo.key %>
+        <%= cl_image_tag @product.user.photo.key, class: 'product-show-user-img' %>
+      <% else %>
+        <img class='product-show-user-img' src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="">
+      <% end %>
       <h2 class="user-profile-title"><%= @product.user.first_name %> <%= @product.user.last_name %> <br> <span>Vendor</span></h2>
     </div>
     <div>

@@ -10,7 +10,7 @@
     <% if @user.photo.key %>
       <%= cl_image_tag @user.photo.key, class: 'user-profile-img'%>
     <% else %>
-      <img class="user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+      <img class="user-img" src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="">
     <% end %>
     <h2 class="username"><%= @user.first_name %> <%= @user.last_name %></h2>
     <h2 class="email"><%= @user.email %></h2>
