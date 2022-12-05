@@ -1,0 +1,20 @@
+.chatroom-card {
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.77);
+  box-shadow: 0px 10px 20px rgba(35, 35, 35, .2);
+  text-decoration: none;
+  color: black !important;
+  margin: 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.message-user-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}

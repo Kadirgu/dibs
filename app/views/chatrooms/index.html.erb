@@ -1,17 +1,28 @@
 <div class="container">
   <div class="container chatroom">
-    <h1>#<%= @chatroom.name %></h1>
-    <div class="messages">
-      <% @chatroom.messages.each do |message| %>
-        <div id="message-<%= message.id %>">
-          <small>
-            <strong><%= message.user.nickname %></strong>
-            <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-          </small>
-          <p><%= message.content %></p>
-        </div>
+    <h1> Chats </h1>
+    <div class="search">
+        <%= form_with url: chatrooms_path, method: :get, class: "d-flex search-field" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search"
+      %>
+      <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
+      <% @chatrooms.each do |chatroom| %>
+      <%= link_to chatroom_path(chatroom) do %>
+        <div class="chatroom-card">
+          <div>
+            <img class="message-user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+          </div>
+          <div>
+            <strong><%= chatroom.product.user.first_name %></strong><br>
+            <strong><%= chatroom.product.title %></strong>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
   </div>
 </div>
-<%= render "layouts/footer" %>
