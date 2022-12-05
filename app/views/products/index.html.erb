@@ -6,7 +6,7 @@
         <% if @user.photo.key %>
           <%= cl_image_tag @user.photo.key, class: 'user-img'%>
         <% else %>
-          <img class="user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+          <img class="user-img" src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="">
         <% end %>
         </div>
         <div>
@@ -16,29 +16,29 @@
       </div>
     <% end %>
 
-    <div class="spotted">
-      <div class="spotted-map"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div>
-
     <div class="search">
-        <%= form_with url: products_path, method: :get, class: "d-flex search-field" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Search"
-      %>
-      <%= submit_tag "Search", class: "button" %>
+      <%= form_with url: products_path, method: :get, class: "search-field" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
+        <br><br>
+        <% Product::CATEGORIES.each do |category|%>
+          <%= label_tag category %>
+          <%= check_box_tag 'categories[]', category %>
+        <% end %>
+        <br><br>
+        <% Product::CONDITIONS.each do |condition|%>
+          <%= label_tag condition %>
+          <%= check_box_tag 'conditions[]', condition %>
+        <% end %>
+        <br><br>
+        <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
 
+
+
     <div class="products row">
-      <h2>Most recent</h2>
       <% @products.each do |product| %>
-        <div class="col-6">
+        <%= content_tag :div, class: "col-6", id: dom_id(product) do %> <!-- Sebi tried to get anchors working -->
           <%= link_to product_path(product) do %>
             <div class="product-card">
               <% if product.photos.count != 0 %>
@@ -53,11 +53,17 @@
                 <p class="product-price"><%= product.price %> €</p>
               </div>
               <div class="favorite-button">
-                <a href="#"><i class="fa fa-heart"></i></a>
+                <% if Favorite.where(product_id: product.id, user_id: current_user.id).empty? %>
+                  <%= link_to product_favorites_path(product), data: {turbo_method: :post} do %>
+                    <i class="fa-regular fa-heart"></i>
+                  <% end %>
+                <% else %>
+                  <i class="fa fa-heart"></i>
+                <% end %>
               </div>
             </div>
           <% end %>
-        </div>
+        <% end %>
       <% end %>
     </div>
 

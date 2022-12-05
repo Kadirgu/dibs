@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  root to: "products#index"
 
-  resources :favorites, only: [:index, :show]
+  resources :favorites, only: [:index, :destroy]
   resources :products do
     resources :chatrooms, only: [:create]
-    resources :favorites, only: [:new, :create, :destroy]
+    resources :favorites, only: [:create]
   end
   resources :chatrooms, only: [:show, :index] do
     resources :messages

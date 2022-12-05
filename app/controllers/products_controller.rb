@@ -19,14 +19,16 @@ class ProductsController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: {product: product})
       }
     end
+
+    
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product_array = Product.where(id: params[:id])
+    @product = @product_array.first
     @favorite = Favorite.new
     @user = @product.user
-    @products = Product.all
-    @markers = @products.geocoded.map do |product|
+    @markers = @product_array.geocoded.map do |product|
       {
         lat: product.latitude,
         lng: product.longitude,
@@ -37,6 +39,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.material= params[:product][:material].join(", ")
     @product.user = current_user
     if @product.save!
       redirect_to product_path(@product)

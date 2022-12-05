@@ -10,20 +10,23 @@
     <% if @user.photo.key %>
       <%= cl_image_tag @user.photo.key, class: 'user-profile-img'%>
     <% else %>
-      <img class="user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+      <img class="user-profile-img" src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="">
     <% end %>
     <h2 class="username"><%= @user.first_name %> <%= @user.last_name %></h2>
     <h2 class="email"><%= @user.email %></h2>
-    <%= link_to 'Edit Profile', edit_user_registration_path(@user), class: 'button'%>
-    <%= link_to 'Logout', destroy_user_session_path(@user), class: 'button secondary'%>
+    <% if @user.id == current_user.id %>
+      <%= link_to 'Edit Profile', edit_user_registration_path, class: 'button'%>
+      <%= link_to 'Logout', destroy_user_session_path, class: 'button secondary', data: {turbo_method: :delete}%>
+    <% end %>
   </div>
 
   <div class="products row">
+  <% if @my_products.count != 0 %>
     <% @my_products.each do |product| %>
       <div class="col-6">
         <%= link_to product_path(product) do %>
           <div class="product-card">
-          <% if product.photos %>
+          <% if product.photos.count != 0 %>
             <% product.photos.each do |photo| %>
                 <%= cl_image_tag photo.key, class: 'product-img' %>
             <% end %>
@@ -34,15 +37,20 @@
               <h2 class="product-title"><%= product.title %></h2>
               <p class="product-price"><%= product.price %> €</p>
             </div>
-            <div class="favorite-button">
-              <%= link_to  edit_product_path(product) do %>
-                <i class="fa fa-pen"></i>
-              <% end %>
-            </div>
+            <% if @user.id == current_user.id %>
+              <div class="favorite-button">
+                <%= link_to  edit_product_path(product) do %>
+                  <i class="fa fa-pen"></i>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
     <% end %>
+  <% else %>
+  <p style="text-align: center;">You haven't published any products yet.</p>
+  <% end %>
   </div>
 
 

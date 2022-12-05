@@ -12,19 +12,20 @@ berlin_locations = ["Oranienstraße 122, 10969", "Wallstrasse 37, 53557", "Günt
   )
 end
 
-# 20.times do
-#   Product.create(
-#     title: Faker::House.furniture,
-#     condition: ["New", "Good", "Old"].sample,
-#     user_id: rand(User.first.id..User.last.id),
-#     location: berlin_locations.sample,
-#     description: Faker::Lorem.sentence(word_count: 50),
-#     material: ["Leather", "Metal", "Wood", "Plastic", "Silk", "Cotton"].sample,
-#     dimension: rand(2..10),
-#     price: rand(10..500),
-#     spotted: [true,false].sample
-#   )
-# end
+20.times do
+  Product.create(
+    title: Faker::House.furniture,
+    category: ["Kitchen", "Living Room", "Office", "Bathroom", "Bedroom", "Dining Room", "Garden", "Other"].sample,
+    condition: ["New", "Good", "Old"].sample,
+    user_id: rand(User.first.id..User.last.id),
+    location: berlin_locations.sample,
+    description: Faker::Lorem.sentence(word_count: 50),
+    material: ["Leather", "Metal", "Wood", "Plastic", "Silk", "Cotton"].sample,
+    dimension: rand(2..10),
+    price: rand(10..500).round(2),
+    spotted: [true,false].sample
+  )
+end
 
 # users = User.all
 # products = Product.all
