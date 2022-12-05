@@ -10,31 +10,26 @@
         <% end %>
         </div>
         <div>
-          <h2 class="site-navigation-title">Welcome!👋<br>
+          <h2 class="site-navigation-title">Good morning👋<br>
           <span><%= @user.first_name %></span></h2>
         </div>
       </div>
     <% end %>
 
     <div class="search">
-      <%= form_with url: products_path, method: :get, class: "search-field" do %>
-        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
-        <br><br>
-        <% Product::CATEGORIES.each do |category|%>
-          <%= label_tag category %>
-          <%= check_box_tag 'categories[]', category %>
-        <% end %>
-        <br><br>
-        <% Product::CONDITIONS.each do |condition|%>
-          <%= label_tag condition %>
-          <%= check_box_tag 'conditions[]', condition %>
-        <% end %>
-        <br><br>
-        <%= submit_tag "Search", class: "button" %>
+        <%= form_with url: products_path, method: :get, class: "d-flex search-field" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search"
+      %>
+      <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
 
+    <div class="cateogires">
 
+    </div>
 
     <div class="products row">
       <% @products.each do |product| %>
@@ -52,15 +47,17 @@
                 <h2 class="product-title"><%= product.title %></h2>
                 <p class="product-price"><%= product.price %> €</p>
               </div>
-              <div class="favorite-button">
-                <% if Favorite.where(product_id: product.id, user_id: current_user.id).empty? %>
-                  <%= link_to product_favorites_path(product), data: {turbo_method: :post} do %>
-                    <i class="fa-regular fa-heart"></i>
+              <% if current_user %>
+                <div class="favorite-button">
+                  <% if Favorite.where(product_id: product.id, user_id: current_user.id).empty? %>
+                    <%= link_to product_favorites_path(product), data: {turbo_method: :post} do %>
+                      <i class="fa-regular fa-heart"></i>
+                    <% end %>
+                  <% else %>
+                    <i class="fa fa-heart"></i>
                   <% end %>
-                <% else %>
-                  <i class="fa fa-heart"></i>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
             </div>
           <% end %>
         <% end %>
