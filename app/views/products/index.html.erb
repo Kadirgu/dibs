@@ -17,21 +17,24 @@
     <% end %>
 
     <div class="search">
-        <%= form_with url: products_path, method: :get, class: "d-flex search-field" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Search"
-      %>
-      <%= submit_tag "Search", class: "button" %>
+      <%= form_with url: products_path, method: :get, class: "search-field" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
+        <br><br>
+        <% Product::CATEGORIES.each do |category|%>
+          <%= label_tag category %>
+          <%= check_box_tag 'categories[]', category %>
+        <% end %>
+        <br><br>
+        <% Product::CONDITIONS.each do |condition|%>
+          <%= label_tag condition %>
+          <%= check_box_tag 'conditions[]', condition %>
+        <% end %>
+        <br><br>
+        <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
 
-    <div class="cateogires">
-      --> List all Categories
-      --> List all Conditions
-      --> List all Materials
-    </div>
+
 
     <div class="products row">
       <% @products.each do |product| %>
