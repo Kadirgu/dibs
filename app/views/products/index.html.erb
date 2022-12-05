@@ -10,7 +10,7 @@
         <% end %>
         </div>
         <div>
-          <h2 class="site-navigation-title">Welcome to Dibs👋<br>
+          <h2 class="site-navigation-title">Welcome!👋<br>
           <span><%= @user.first_name %></span></h2>
         </div>
       </div>
@@ -19,17 +19,15 @@
     <div class="search">
       <%= form_with url: products_path, method: :get, class: "search-field" do %>
         <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
-        <br><br>
-        <% Product::CATEGORIES.each do |category|%>
-          <%= label_tag category %>
-          <%= check_box_tag 'categories[]', category %>
-        <% end %>
-        <br><br>
-        <% Product::CONDITIONS.each do |condition|%>
-          <%= label_tag condition %>
-          <%= check_box_tag 'conditions[]', condition %>
-        <% end %>
-        <br><br>
+
+        <div class="search-filter">
+          <% Product::CATEGORIES.each do |category|%>
+            <div class="button secondary filter-search-button">
+              <%= label_tag category %>
+              <%= check_box_tag 'categories[]', category %>
+            </div>
+          <% end %>
+        </div>
         <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
@@ -68,3 +66,17 @@
     </div>
 
   </div>
+
+
+<script>
+
+checkboxes = document.querySelectorAll('.filter-search-button input')
+
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('click', (event) => {
+  event.currentTarget.parentElement.classList.toggle('secondary')
+  console.log("test")
+})
+})
+
+</script>
