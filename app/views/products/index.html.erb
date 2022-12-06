@@ -18,7 +18,7 @@
 
   <div data-controller="search-products">
       <div class="search">
-        <%= form_with url: products_path, method: :get, id: 'searchForm', class: "search-form", data: { search_products_target: "form", action: "keydown->search-products#update"} do %>
+        <%= form_with url: products_path, method: :get, id: 'searchForm', class: "search-form" do %>
           <div class="search-bar">
             <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
             <%= submit_tag "Search", class: "button submit-button" %>
@@ -26,9 +26,9 @@
 
           <div class="search-filter">
             <% Product::CATEGORIES.each do |category|%>
-              <div class="button secondary filter-search-button">
+              <div class="search-button <%= params[:categories]&.include?(category) ? 'button' : ''%> filter-search-button">
                 <%= label_tag category %>
-                <%= check_box_tag 'categories[]', category, false,
+                <%= check_box_tag 'categories[]', category,params[:categories] ? params[:categories].include?(category) : false,
                 data: {
                   search_products_target: "input",
                   action: "click->search-products#update"
@@ -82,7 +82,7 @@ checkboxes = document.querySelectorAll('.filter-search-button input')
 
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('click', (event) => {
-    event.currentTarget.parentElement.classList.toggle('secondary')
+  event.currentTarget.parentElement.classList.toggle('secondary')
 })
 })
 
