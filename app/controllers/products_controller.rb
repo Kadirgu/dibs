@@ -6,8 +6,6 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.by_recently_created
-
     @user = current_user
     if params[:query] || params[:categories]
       @search_products = []
@@ -22,7 +20,7 @@ class ProductsController < ApplicationController
       @products = @search_products.flatten
       return @products
     else
-      @products = Product.all
+      @products = Product.all.by_recently_created
     end
 
     @markers = @products.geocoded.map do |product|
