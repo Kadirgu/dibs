@@ -7,5 +7,6 @@ export default class extends Controller {
 
   update() {
     document.getElementById("searchForm").submit();
+    console.log("test");
   }
 }
