@@ -3,7 +3,7 @@
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
 >
   <h1><%= @chatroom.product.title %></h1>
-  <%= link_to '← Go back', products_path, class: "button" %>
+  <%= link_to '← Go back main page', products_path, class: "button" %>
   <br>
   <br>
 
@@ -25,6 +25,6 @@
     <%= f.submit "Send", class: "button" %>
   <% end %>
 
-  <%= link_to '← Go back', chatrooms_path, class: "button" %>
+  <%= link_to '← Go back to chatrooms', chatrooms_path, class: "button" %>
   </div>
 </div>

@@ -11,6 +11,8 @@
       <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
+    <br>
+    <%= link_to '← Go back to main page', products_path, class: "button" %>
     <% if @chatrooms.empty? %>
     <p>"Sorry! Couldn't find what you're looking for!"</p>
     <% else  %>
