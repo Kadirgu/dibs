@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  justify-content: space-between;
 }
 
 .message-user-img {
@@ -18,9 +19,11 @@
   object-fit: cover;
 }
 
-.archive-feature {
-  color: black;
-  display: flex;
-  align-items: flex-end;
+.chat-card-text {
   text-decoration: none;
+  color: black !important;
+}
+
+.black {
+  color:black !important;
 }
