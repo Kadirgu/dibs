@@ -23,6 +23,16 @@
   margin: 25px 0px;
 }
 
+.search-bar {
+  display: flex;
+
+  .submit-button {
+    position: absolute;
+    right: 0;
+    padding: 6px 10px;
+  }
+}
+
 .search-filter {
   display: flex;
   align-items: center;

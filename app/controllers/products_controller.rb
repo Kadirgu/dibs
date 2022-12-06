@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
       @products = @search_products.flatten
       return @products
     else
-      @products = Product.all
+      @products = Product.all.by_recently_created
     end
 
     @markers = @products.geocoded.map do |product|
@@ -78,6 +78,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :condition, :material, :price, :dimension, :location, :latitude, :longitude, :spotted, photos: [])
+    params.require(:product).permit(:title, :description, :condition, :category, :material, :price, :dimension, :location, :latitude, :longitude, :spotted, photos: [])
   end
 end
