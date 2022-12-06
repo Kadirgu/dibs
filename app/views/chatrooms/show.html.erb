@@ -2,6 +2,10 @@
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
 >
+  <h1><%= @chatroom.product.title %></h1>
+  <%= link_to '← Go back', products_path, class: "button" %>
+  <br>
+  <br>
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
@@ -9,7 +13,7 @@
     <% end %>
   </div>
 
-<h1><%= @chatroom.product.title %></h1>
+  <div class="message-field">
   <%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
   %>
     <%= f.input :content,
@@ -22,4 +26,5 @@
   <% end %>
 
   <%= link_to '← Go back', products_path, class: "button" %>
+  </div>
 </div>

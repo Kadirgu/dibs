@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
       @products = @search_products.flatten
       return @products
     else
-      @products = Product.all
+      @products = Product.all.by_recently_created
     end
 
     @markers = @products.geocoded.map do |product|
@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
     @product = @product_array.first
     @favorite = Favorite.new
     @user = @product.user
+    @chatroom = Chatroom.where(product: @product, user: current_user)
     @markers = @product_array.geocoded.map do |product|
       {
         lat: product.latitude,
@@ -77,6 +78,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :condition, :material, :price, :dimension, :location, :latitude, :longitude, :spotted, photos: [])
+    params.require(:product).permit(:title, :description, :condition, :category, :material, :price, :dimension, :location, :latitude, :longitude, :spotted, photos: [])
   end
 end
