@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
 
   .user-img {
     width: 85px;
@@ -20,16 +20,26 @@
 
 /*SEARCH*/
 .search {
-  margin: 25px 0px;
+  // position: fixed
+  // box-shadow: 0px 5px 10px rgba(35,35,35,.15);
+
+  width: 100%;
+  top: 0;
+  padding: 15px;
+  z-index: 10;
+  background: #F4F4F4;
 }
 
 .search-bar {
   display: flex;
 
+  .form-control {
+    padding: .55em;
+  }
+
   .submit-button {
     position: absolute;
     right: 0;
-    padding: 6px 10px;
   }
 }
 
@@ -61,20 +71,6 @@
 input[type="checkbox" i]  {
   background-color: transparent;
   appearance: initial;
-}
-
-
-
-
-/*SPOTTED*/
-.spotted {
-  margin: 25px 0px;
-}
-
-.spotted-map {
-  width: 100%;
-  height: 185px;
-  border-radius: 8px;;
 }
 
 /*CATEGORIES*/
@@ -143,4 +139,20 @@ input[type="checkbox" i]  {
     color: #000;
     font-size: 12px;
   }
+}
+
+
+/*SPOTTED*/
+.spotted {
+  margin: 25px 0px;
+}
+.map-button {
+  position: fixed;
+  bottom: 75px;
+  width: 100%;
+  text-align: center;
+}
+
+.spotted-map-index {
+  border-radius: 0px;
 }
