@@ -5,18 +5,13 @@
     <% end %>
     <div class="product-show-edit-nav">
       <h2 class="site-navigation-title">Go back</h2>
-    <% if user_signed_in? %>
-      <% if @user.id == current_user.id %>
-        
-
-        <%= link_to edit_product_path(@product) do %>
-          <i class="fa fa-pen"></i>
+      <% if user_signed_in? %>
+        <% if @user.id == current_user.id %>
+          <%= link_to edit_product_path(@product) do %>
+            <i class="fa fa-pen"></i>
+          <% end %>
         <% end %>
-
-
       <% end %>
-    <% end %>
-
     </div>
   </div>
 

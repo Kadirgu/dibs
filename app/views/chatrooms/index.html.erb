@@ -11,6 +11,9 @@
       <%= submit_tag "Search", class: "button" %>
       <% end %>
     </div>
+    <% if @chatrooms.empty? %>
+    <p>"Sorry! Couldn't find what you're looking for!"</p>
+    <% else  %>
       <% @chatrooms.each do |chatroom| %>
         <div class="chatroom-card">
           <%= link_to chatroom_path(chatroom) do %>
@@ -29,5 +32,6 @@
           </div>
         </div>
       <% end %>
+    <% end %>
   </div>
 </div>
