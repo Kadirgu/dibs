@@ -1,6 +1,6 @@
 <%= simple_form_for(product) do |f| %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.input :title %>
-  <%= f.input :image, as: :file %>
   <%= f.input :description %>
   <%= f.input :location, placeholder: 'Oranienstraße 6, Berlin',
       input_html: {data: {address_autocomplete_target: "address"} },
