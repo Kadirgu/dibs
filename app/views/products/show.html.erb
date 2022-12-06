@@ -73,14 +73,13 @@
     <p><strong>Dimension:</strong><br><%= @product.dimension %> cm</p>
   <% end %>
     <p><strong>Location:</strong><br><%= @product.location %></p>
-    <hr>
+
   <% unless @product.spotted == true %>
     <div class="product-show-price-container">
       <div class="product-price">
         <p>Total price</p>
         <p class="price"><%= @product.price %> €</p>
-      </div>
-  <% end %>
+    </div>
     <% if user_signed_in? %>
       <% if current_user.id != @product.user.id %>
           <%= link_to product_chatrooms_path(@product), class: 'button button-large', data: { turbo_method: :post } do %>
@@ -89,9 +88,12 @@
         <% end %>
       <% end %>
     <% end %>
-
   </div>
+  <% end %>
+
+
   <hr>
+
   <div class="spotted-map"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
@@ -113,4 +115,5 @@
       <% end %>
     </div>
   </div>
+
 </div>

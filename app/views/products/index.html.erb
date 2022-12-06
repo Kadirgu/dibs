@@ -62,7 +62,11 @@
                 </div>
                 <div class="product-information">
                   <h2 class="product-title"><%= product.title %></h2>
-                  <p class="product-price"><%= product.price %> €</p>
+                  <% if product.spotted %>
+                    <p class="product-price"><span style="">SPOTTED</span></p>
+                  <% else %>
+                    <p class="product-price"><%= product.price %> €</p>
+                  <% end %>
                 </div>
                 <% if user_signed_in? %>
                   <div class="favorite-button">
