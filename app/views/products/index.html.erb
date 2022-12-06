@@ -40,7 +40,7 @@
       <% end %>
     </div>
 
-<div class="container">
+  <div class="container">
     <div class="products row">
       <% @products.each do |product| %>
         <%= content_tag :div, class: "col-6", id: "dom_id(product)" do %> <!-- Sebi tried to get anchors working -->
@@ -73,20 +73,25 @@
         <% end %>
       <% end %>
     </div>
-</div>
+  </div>
 
   <div class="map-button">
     <button type="button" class="button" data-toggle="modal" data-target=".bd-example-modal-lg">Map<span style="margin-right: 7px;"></span><i class="fa fa-map"></i></button>
   </div>
+
 </div>
+
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-  <div class="modal-content spotted-map-index"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content spotted-map-index"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
-</div>
+  <div class="map-button">
+    <button type="button" class="button" data-toggle="modal" data-target=".bd-example-modal-lg">List<span style="margin-right: 7px;"></span><i class="fa fa-list"></i></button>
+  </div>
 </div>
 
 

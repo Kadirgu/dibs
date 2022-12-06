@@ -33,10 +33,13 @@
 .search-bar {
   display: flex;
 
+  .form-control {
+    padding: .55em;
+  }
+
   .submit-button {
     position: absolute;
     right: 0;
-    padding: 6px 10px;
   }
 }
 
@@ -151,8 +154,5 @@ input[type="checkbox" i]  {
 }
 
 .spotted-map-index {
-  width: 100%;
-  height: 72vh;
-  margin-top: 125px;
   border-radius: 0px;
 }
