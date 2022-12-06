@@ -148,7 +148,8 @@ input[type="checkbox" i]  {
   bottom: 75px;
   width: 100%;
   text-align: center;
-  z-index: 1000000;
+  z-index: 10;
+  position: absolute;
 }
 
 .spotted-map-index {
@@ -164,8 +165,14 @@ input[type="checkbox" i]  {
   position: relative;
   height: 100vh;
   margin-top: -35px;
+  z-index: 1;
+}
+
+.content-view {
+  z-index: 1;
 }
 
 .invisible {
-  display: none;
+  z-index: -1;
+  position: absolute;
 }
