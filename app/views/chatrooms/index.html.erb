@@ -12,17 +12,20 @@
       <% end %>
     </div>
       <% @chatrooms.each do |chatroom| %>
-      <%= link_to chatroom_path(chatroom) do %>
         <div class="chatroom-card">
-          <div>
-            <img class="message-user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
-          </div>
-          <div>
-            <strong><%= chatroom.product.user.first_name %></strong><br>
-            <strong><%= chatroom.product.title %></strong>
-          </div>
+          <%= link_to chatroom_path(chatroom) do %>
+            <div>
+              <img class="message-user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+            </div>
+            <div>
+              <strong><%= chatroom.product.user.first_name %></strong><br>
+              <strong><%= chatroom.product.title %></strong>
+            </div>
+          <% end %>
+          <%= link_to archive_chatroom_path(chatroom), data: {turbo_method: :patch, turbo_confirm: "Are you sure?"}  do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
         </div>
-        <% end %>
       <% end %>
   </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_05_103448) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_105504) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_103448) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.boolean "visible_for_seller", default: true
+    t.boolean "visible_for_user", default: true
     t.index ["product_id"], name: "index_chatrooms_on_product_id"
     t.index ["user_id"], name: "index_chatrooms_on_user_id"
   end

@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
 
   def index
-    @chatrooms = Chatroom.where(user: current_user).or Chatroom.where(product: current_user.products)
+    @chatrooms = Chatroom.where(user: current_user, visible_for_user: true).or Chatroom.where(product: current_user.products, visible_for_seller: true)
   end
 
   def show
@@ -22,11 +22,21 @@ class ChatroomsController < ApplicationController
     end
   end
 
+  def archive
+    @chatroom = Chatroom.find(params[:id])
+    is_buyer = @chatroom.user == current_user
+    if is_buyer
+      @chatroom.visible_for_user = false
+    else
+      @chatroom.visible_for_seller = false
+    end
+    @chatroom.save
+    redirect_to chatrooms_path
+  end
   # def destroy
   #   @chat = Chatroom.find(params[:id])
   #   @chat.destroy
-  #   flash[:success] = "The chat was successfully deleted."
+  #   flash[:success] = "The chat with '$#{current_user.first_name}' and '$#{user.products.first_name}' was successfully deleted."
   #   redirect_to chats_path
   # end
-
 end
