@@ -1,4 +1,5 @@
 <%= simple_form_for(product) do |f| %>
+  <%= f.input :spotted, as: :hidden, input_html: { value: false } %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.input :title%>
   <%= f.input :description%>
