@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="product-form">
   <div class="site-navigation">
     <%= link_to :back do %>
       <i class="fa fa-arrow-left"></i>
@@ -6,5 +6,19 @@
     <h2 class="site-navigation-title">Create a new Product</h2>
   </div>
 
-  <%= render "form", product: @product %>
+  <div class="options-container d-flex align-items-center" data-product-form-target="options">
+    <div class="option p-5 border shadow" data-action="click->product-form#showForm" data-form-type="regular">
+      <h3>Your Item</h3>
+    </div>
+    <div class="option p-5 border shadow"  data-action="click->product-form#showForm" data-form-type="spotted">
+      <h3>Spotted Item</h3>
+    </div>
+  </div>
+
+  <div class="d-none" data-product-form-target="regularForm">
+    <%= render "form", product: @product %>
+  </div>
+  <div class="d-none"   data-product-form-target="spottedForm">
+    <%= render "spottedform", product: @product %>
+  </div>
 </div>
