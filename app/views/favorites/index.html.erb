@@ -23,7 +23,7 @@
                 <p class="product-price">$<%= fav.product.price %></p>
               </div>
               <div class="favorite-button">
-                <%= link_to product_path(fav.product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <%= link_to favorite_path(fav), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
                   <i class="fa-solid fa-trash-can"></i>
                 <% end %>
               </div>

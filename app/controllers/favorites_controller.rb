@@ -12,6 +12,8 @@ class FavoritesController < ApplicationController
     if @favorite.save
       if request.referrer.include?("products/")
         redirect_to product_path(@product)
+      elsif request.referrer.include?('users')
+        redirect_to user_path(@product.user)
       else
         redirect_to products_path(anchor: dom_id(@product)) # Sebi tried to get anchors working
       end
@@ -24,4 +26,3 @@ class FavoritesController < ApplicationController
     redirect_to favorites_path, status: :see_other
   end
 end
-

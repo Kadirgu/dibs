@@ -25,7 +25,7 @@ end
     title: Faker::House.furniture,
     category: ["Kitchen", "Living Room", "Office", "Bathroom", "Bedroom", "Dining Room", "Garden", "Other"].sample,
     condition: ["New", "Good", "Old"].sample,
-    user_id: rand(User.first.id..User.last.id),
+    user: User.all.sample,
     location: berlin_locations.sample,
     description: Faker::Lorem.sentence(word_count: 50),
     material: ["Leather", "Metal", "Wood", "Plastic", "Silk", "Cotton"].sample,
@@ -54,7 +54,7 @@ user = User.create(
 product = Product.create!(
   title: Faker::Lorem.sentence(word_count: 4),
   condition: ["New", "Good", "Old"].sample,
-  user_id: rand(User.first.id..User.last.id),
+  user: User.excluding(user).sample,
   location: berlin_locations.sample,
   description: Faker::Lorem.sentence(word_count: 50),
   material: ["Leather", "Metal", "Wood", "Plastic", "Silk", "Cotton"].sample,
