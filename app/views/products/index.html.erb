@@ -101,21 +101,20 @@
 
 <script>
 
-  checkboxes = document.querySelectorAll('.filter-search-button input')
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('click', (event) => {
-    event.currentTarget.parentElement.classList.toggle('secondary')
-  })
-  })
-
   map_button = document.querySelector('.map-button-button')
+  map_button_container = document.querySelector('.map-button')
+
+
   map_button.addEventListener('click', (event) => {
   map_view = document.querySelector('.map-view')
   content_view = document.querySelector('.content-view')
+  footer = document.querySelector('.footer')
 
     map_view.classList.toggle('invisible')
     content_view.classList.toggle('invisible')
-    console.log("test")
+
+    footer.classList.toggle('absolute')
+    map_button_container.classList.toggle('absolute')
   })
 
 

@@ -140,39 +140,3 @@ input[type="checkbox" i]  {
     font-size: 12px;
   }
 }
-
-
-/*SPOTTED*/
-.map-button {
-  position: fixed;
-  bottom: 75px;
-  width: 100%;
-  text-align: center;
-  z-index: 10;
-  position: absolute;
-}
-
-.spotted-map-index {
-  border-radius: 0px;
-  position: absolute;
-  height: 100% !important;
-  width: 100% !important;
-  top: 0;
-  bottom: 0;
-}
-
-.map-view {
-  position: relative;
-  height: 100vh;
-  margin-top: -35px;
-  z-index: 1;
-}
-
-.content-view {
-  z-index: 1;
-}
-
-.invisible {
-  z-index: -1;
-  position: absolute;
-}

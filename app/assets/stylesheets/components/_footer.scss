@@ -6,7 +6,6 @@
   padding: 12px;
   position: sticky;
   margin-top: 35px;
-  position: absolute;
   z-index: 100;
 }
 
@@ -18,4 +17,8 @@
     color: #000;
     font-size: 16px;
   }
+}
+
+.absolute {
+  position: absolute !important;
 }
