@@ -8,7 +8,8 @@ class User < ApplicationRecord
 
   has_many :products
   has_many :messages
-  has_many :chats
+  has_many :chatrooms
+  has_many :chatrooms_as_seller, through: :products, source: :chatrooms
   has_many :favorites, dependent: :destroy
 
 end

@@ -2,6 +2,9 @@ class ChatroomsController < ApplicationController
 
   def index
     @chatrooms = Chatroom.where(user: current_user, visible_for_user: true).or Chatroom.where(product: current_user.products, visible_for_seller: true)
+    if params[:query]
+      @chatrooms = Chatroom.chatroom_search(params[:query])
+    end
   end
 
   def show
