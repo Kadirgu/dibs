@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
     @product = @product_array.first
     @favorite = Favorite.new
     @user = @product.user
+    @chatroom = Chatroom.where(product: @product, user: current_user)
     @markers = @product_array.geocoded.map do |product|
       {
         lat: product.latitude,
