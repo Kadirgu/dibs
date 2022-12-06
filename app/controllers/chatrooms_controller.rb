@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
 
   def index
-    @chatrooms = Chatroom.where(user: current_user)
+    @chatrooms = Chatroom.where(user: current_user).or Chatroom.where(product: current_user.products)
   end
 
   def show
