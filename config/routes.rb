@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     resources :chatrooms, only: [:create]
     resources :favorites, only: [:create]
   end
+
   resources :chatrooms, only: [:show, :index] do
+    member do
+      patch :archive
+    end
     resources :messages
   end
 
