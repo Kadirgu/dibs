@@ -83,7 +83,6 @@
       <% if current_user.id != @product.user.id %>
           <%= link_to product_chatrooms_path(@product), class: 'button button-large', data: { turbo_method: :post } do %>
             <i class="fa fa-envelope"></i> Message
-
         <% end %>
       <% end %>
     <% end %>
