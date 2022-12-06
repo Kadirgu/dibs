@@ -12,9 +12,11 @@ class Product < ApplicationRecord
   CONDITIONS = ["New", "Good", "Used"]
   MATERIALS = ["Metal", "Wood", "Leather", "Silk", "Cotton", "Plastic"]
 
+  enum status: [:available, :not_available]
+
   include PgSearch::Model
   pg_search_scope :search_a_lot,
-    against: [ :location, :title, :description, :image, :price, :material, :condition, :user_id, :category ],
+    against: [ :location, :title, :description, :image, :price, :material, :condition, :user_id, :category, :spotted ],
     using: {
       tsearch: { prefix: true }
   }

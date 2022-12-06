@@ -46,13 +46,20 @@
           <%= content_tag :div, class: "col-6", id: "dom_id(product)" do %> <!-- Sebi tried to get anchors working -->
             <%= link_to product_path(product) do %>
               <div class="product-card">
-                <% if product.photos.attached? %>
-                  <% product.photos.each do |photo| %>
-                    <%= cl_image_tag photo.key, class: 'product-img' %>
+                <div class="position-relative">
+                  <% if product.photos.attached? %>
+                    <% product.photos.each do |photo| %>
+                      <%= cl_image_tag photo.key, class: 'product-img' %>
+                    <% end %>
+                  <% else %>
+                    <img class="product-show-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
                   <% end %>
-                <% else %>
-                  <img class="product-show-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
-                <% end %>
+                  <% if product.spotted == true %>
+                    <div class="btn btn-success position-absolute bottom-0 end-0">
+                      <p>spotted</p>
+                    </div>
+                  <% end %>
+                </div>
                 <div class="product-information">
                   <h2 class="product-title"><%= product.title %></h2>
                   <p class="product-price"><%= product.price %> €</p>

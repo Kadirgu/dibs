@@ -65,18 +65,22 @@
 
   </div>
   <hr>
-  <p><strong>Description:</strong><br><%= @product.description %></p>
-  <p><strong>Category:</strong><br><%= @product.category %></p>
-  <p><strong>Condition:</strong><br><%= @product.condition %></p>
-  <p><strong>Material:</strong><br><%= @product.material %></p>
-  <p><strong>Dimension:</strong><br><%= @product.dimension %> cm</p>
-  <p><strong>Location:</strong><br><%= @product.location %></p>
-  <hr>
-  <div class="product-show-price-container">
-    <div class="product-price">
-      <p>Total price</p>
-      <p class="price"><%= @product.price %> €</p>
-    </div>
+    <p><strong>Description:</strong><br><%= @product.description %></p>
+  <% unless @product.spotted == true %>
+    <p><strong>Category:</strong><br><%= @product.category %></p>
+    <p><strong>Condition:</strong><br><%= @product.condition %></p>
+    <p><strong>Material:</strong><br><%= @product.material %></p>
+    <p><strong>Dimension:</strong><br><%= @product.dimension %> cm</p>
+  <% end %>
+    <p><strong>Location:</strong><br><%= @product.location %></p>
+    <hr>
+  <% unless @product.spotted == true %>
+    <div class="product-show-price-container">
+      <div class="product-price">
+        <p>Total price</p>
+        <p class="price"><%= @product.price %> €</p>
+      </div>
+  <% end %>
     <% if user_signed_in? %>
       <% if current_user.id != @product.user.id %>
           <%= link_to product_chatrooms_path(@product), class: 'button button-large', data: { turbo_method: :post } do %>
