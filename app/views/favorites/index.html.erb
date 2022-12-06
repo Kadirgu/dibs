@@ -5,8 +5,8 @@
     <% end %>
     <h2 class="site-navigation-title">Your Favorites <i class="fa fa-heart"></i></h2>
   </div>
-
-  <div class="products row">
+  <% if @favorites.count > 0 %>
+    <div class="products row">
       <% @favorites.each do |fav| %>
         <div class="col-6">
           <%= link_to product_path(fav.product) do %>
@@ -32,4 +32,13 @@
         </div>
       <% end %>
     </div>
+  <% else %>
+  <div style="margin: 50% auto;text-align: center;" class="error-message">
+  <h1 >Darling you don't have favs! 🙄</h1>
+    <p>
+    You can add an item to favorites by clicking on the heart
+    that shows up on the top left.
+    </p>
+  </div>
+  <% end %>
 </div>

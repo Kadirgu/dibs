@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :chatrooms, dependent: :destroy
 
-  CATEGORIES = ["Kitchen", "Livingroom", "Office", "Bathroom", "Bedroom", "Diningroom", "Garden", "Other"]
+  CATEGORIES = ["Kitchen", "Livingroom", "Office", "Bathroom", "Bedroom", "Diningroom", "Garden", "Other", "Spotted"]
   CONDITIONS = ["New", "Good", "Used"]
   MATERIALS = ["Metal", "Wood", "Leather", "Silk", "Cotton", "Plastic"]
 
@@ -16,7 +16,7 @@ class Product < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_a_lot,
-    against: [ :location, :title, :description, :image, :price, :material, :condition, :user_id, :category, :spotted ],
+    against: [ :location, :title, :description, :image, :price, :material, :condition, :user_id, :category],
     using: {
       tsearch: { prefix: true }
   }
