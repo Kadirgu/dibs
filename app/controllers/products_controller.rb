@@ -6,6 +6,8 @@ class ProductsController < ApplicationController
   end
 
   def index
+    @products = Product.by_recently_created
+
     @user = current_user
     if params[:query] || params[:categories]
       @search_products = []
@@ -77,6 +79,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :condition, :material, :price, :dimension, :location, :latitude, :longitude, :spotted, photos: [])
+    params.require(:product).permit(:title, :description, :condition, :category, :material, :price, :dimension, :location, :latitude, :longitude, :spotted, photos: [])
   end
 end
