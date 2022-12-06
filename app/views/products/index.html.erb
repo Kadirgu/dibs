@@ -15,64 +15,78 @@
       </div>
     </div>
   <% end %>
+</div>
 
-  <div data-controller="search-products">
-      <div class="search">
-        <%= form_with url: products_path, method: :get, id: 'searchForm', class: "search-form" do %>
-          <div class="search-bar">
-            <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
-            <%= submit_tag "Search", class: "button submit-button" %>
-          </div>
+<div data-controller="search-products">
+    <div class="search">
+      <%= form_with url: products_path, method: :get, id: 'searchForm', class: "search-form" do %>
+        <div class="search-bar">
+          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
+          <%= submit_tag "Search", class: "button submit-button" %>
+        </div>
 
-          <div class="search-filter">
-            <% Product::CATEGORIES.each do |category|%>
-              <div class="search-button <%= params[:categories]&.include?(category) ? 'button' : ''%> filter-search-button">
-                <%= label_tag category %>
-                <%= check_box_tag 'categories[]', category,params[:categories] ? params[:categories].include?(category) : false,
-                data: {
-                  search_products_target: "input",
-                  action: "click->search-products#update"
-                } %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+        <div class="search-filter">
+          <% Product::CATEGORIES.each do |category|%>
+            <div class="search-button <%= params[:categories]&.include?(category) ? 'button' : ''%> filter-search-button">
+              <%= label_tag category %>
+              <%= check_box_tag 'categories[]', category,params[:categories] ? params[:categories].include?(category) : false,
+              data: {
+                search_products_target: "input",
+                action: "click->search-products#update"
+              } %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 
-      <div class="products row">
-        <% @products.each do |product| %>
-          <%= content_tag :div, class: "col-6", id: "dom_id(product)" do %> <!-- Sebi tried to get anchors working -->
-            <%= link_to product_path(product) do %>
-              <div class="product-card">
-                <% if product.photos.attached? %>
-                  <% product.photos.each do |photo| %>
-                    <%= cl_image_tag photo.key, class: 'product-img' %>
-                  <% end %>
-                <% else %>
-                  <img class="product-show-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+<div class="container">
+    <div class="products row">
+      <% @products.each do |product| %>
+        <%= content_tag :div, class: "col-6", id: "dom_id(product)" do %> <!-- Sebi tried to get anchors working -->
+          <%= link_to product_path(product) do %>
+            <div class="product-card">
+              <% if product.photos.attached? %>
+                <% product.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, class: 'product-img' %>
                 <% end %>
-                <div class="product-information">
-                  <h2 class="product-title"><%= product.title %></h2>
-                  <p class="product-price"><%= product.price %> €</p>
-                </div>
-                <% if user_signed_in? %>
-                  <div class="favorite-button">
-                    <% if Favorite.where(product_id: product.id, user_id: current_user.id).empty? %>
-                      <%= link_to product_favorites_path(product), data: {turbo_method: :post} do %>
-                        <i class="fa-regular fa-heart"></i>
-                      <% end %>
-                    <% else %>
-                      <i class="fa fa-heart"></i>
+              <% else %>
+                <img class="product-show-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+              <% end %>
+              <div class="product-information">
+                <h2 class="product-title"><%= product.title %></h2>
+                <p class="product-price"><%= product.price %> €</p>
+              </div>
+              <% if user_signed_in? %>
+                <div class="favorite-button">
+                  <% if Favorite.where(product_id: product.id, user_id: current_user.id).empty? %>
+                    <%= link_to product_favorites_path(product), data: {turbo_method: :post} do %>
+                      <i class="fa-regular fa-heart"></i>
                     <% end %>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
+                  <% else %>
+                    <i class="fa fa-heart"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
           <% end %>
         <% end %>
-      </div>
-  </div>
+      <% end %>
+    </div>
+</div>
 
+  <div class="map-button">
+    <button type="button" class="button" data-toggle="modal" data-target=".bd-example-modal-lg">Map<span style="margin-right: 7px;"></span><i class="fa fa-map"></i></button>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content spotted-map-index"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
 </div>
 
 
