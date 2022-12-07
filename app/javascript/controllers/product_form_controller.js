@@ -1,11 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
+import { getAddressInfo } from "@mapbox/mapbox-gl-geocoder/lib/utils";
 
 // Connects to data-controller="product-form"
 export default class extends Controller {
   static targets = ["options", "regularForm", "spottedForm"];
 
   connect() {
-  
+
   }
 
   showForm(event) {
