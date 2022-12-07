@@ -49,6 +49,12 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+
+    if @product.spotted == true
+      @product.category = 'Spotted'
+      @product.price = 0.00
+    end
+
     if @product.material
       @product.material = params[:product][:material].join(", ")
     end
@@ -60,7 +66,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  
+
 
   def edit
     @product = Product.find(params[:id])
