@@ -58,6 +58,7 @@ class ProductsController < ApplicationController
     if @product.material
       @product.material = params[:product][:material].join(", ")
     end
+    
     @product.user = current_user
     if @product.save!
       redirect_to product_path(@product)
