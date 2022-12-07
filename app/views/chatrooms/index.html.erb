@@ -17,10 +17,14 @@
     <p>"Sorry! Couldn't find what you're looking for!"</p>
     <% else  %>
       <% @chatrooms.each do |chatroom| %>
-        <%= link_to chatroom_path(chatroom) do %>
         <div class="chatroom-card">
-            <div class='chat-card-text'>
-              <img class="message-user-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+          <%= link_to chatroom_path(chatroom), class: "w-100" do %>
+            <div class="chat-card-text">
+              <% if chatroom.product.photos.attached? %>
+                <%= cl_image_tag chatroom.product.photos.first.key, class: "product-img-chatcard" %>
+              <% else %>
+                <img class="product-img-chatcard" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+              <% end %>
               <strong><%= chatroom.product.user.first_name %></strong><br>
               <strong><%= chatroom.product.title %></strong>
             </div>
