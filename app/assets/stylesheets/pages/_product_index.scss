@@ -41,7 +41,7 @@
 
   .submit-button {
     position: absolute;
-    right: 0;
+    right: 16px;
   }
 }
 
@@ -88,7 +88,7 @@ input[type="checkbox" i]  {
 
 .product-card {
   border-radius: 8px;
-  box-shadow: 0px 10px 15px rgba(35,35,35,.15);
+  box-shadow: 0px 5px 15px rgb(45 45 45 / 10%);
   position: relative;
   background-color: #fff;
 }
@@ -102,6 +102,7 @@ input[type="checkbox" i]  {
     font-size: 16px;
     font-weight: 700;
     text-transform: capitalize;
+    margin-bottom: 5px;
   }
 
   .product-price {
