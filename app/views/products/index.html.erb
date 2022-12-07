@@ -10,8 +10,8 @@
         <% end %>
         </div>
         <div>
-          <h2 class="site-navigation-title">Welcome!👋<br>
-          <span><%= @user.first_name %></span></h2>
+          <h2 class="site-navigation-title">Welcome to Dibs👋<br>
+          <span>Dig in, <%= @user.first_name %>!</span></h2>
         </div>
       </div>
     <% end %>
@@ -56,7 +56,7 @@
                     <img class="product-show-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
                   <% end %>
                   <% if product.spotted == true %>
-                    <div class="btn btn-success position-absolute bottom-0 end-0">
+                    <div class="spotted-label">
                       <p>spotted</p>
                     </div>
                   <% end %>
