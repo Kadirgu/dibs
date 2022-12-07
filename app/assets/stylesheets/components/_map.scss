@@ -4,5 +4,20 @@
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: "Open Sans", sans-serif;
+}
+
+.popup-title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  margin-top: 15px;
+  color: #1d284b !important;
+  text-decoration: none !important;
+}
+
+.popup-address {
+  font-size: 14px !important;
+  font-weight: 300 !important;
+  margin-bottom: 5px;
+  color: #1d284b !important;
+  text-decoration: none !important;
 }

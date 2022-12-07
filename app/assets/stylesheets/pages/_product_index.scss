@@ -27,14 +27,16 @@
   top: 0;
   padding: 15px;
   z-index: 10;
-  background: #F4F4F4;
 }
 
 .search-bar {
   display: flex;
 
   .form-control {
-    padding: .55em;
+    padding: 0.55em 1em;
+    background: #fff;
+    border: 1px solid #21305e5c;
+    border-radius: 100px;
   }
 
   .submit-button {
@@ -88,13 +90,14 @@ input[type="checkbox" i]  {
   border-radius: 8px;
   box-shadow: 0px 10px 15px rgba(35,35,35,.15);
   position: relative;
+  background-color: #fff;
 }
 
 .product-information {
   padding: 10px;
 
   .product-title {
-    color: #000;
+    color: #1d284b;
     text-decoration: none;
     font-size: 16px;
     font-weight: 700;
@@ -102,7 +105,7 @@ input[type="checkbox" i]  {
   }
 
   .product-price {
-    color: #000;
+    color: #1d284b;
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 0px;
@@ -136,7 +139,32 @@ input[type="checkbox" i]  {
   justify-content: center;
 
   i {
-    color: #000;
+    color: #1d284b;
     font-size: 12px;
+  }
+}
+
+
+/*SPOTTED*/
+.spotted-label {
+  background-color: #ffb005ab;
+  color: #fff;
+  padding: 10px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  font-weight: 700 !important;
+  position: absolute;
+  width: 50%;
+  top: 0;
+  border-radius: 8px;
+  padding: 5px;
+  justify-content: center;
+
+  p {
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    font-size: 16px !important;
+    margin-bottom: 0px;
   }
 }

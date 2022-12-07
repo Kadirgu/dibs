@@ -1,5 +1,11 @@
-<h2><%= product.title %></h2>
-<p><%= product.image %></p>
-<p><%= product.location %></p>
-<p><%= product.condition %></p>
-<p><%= product.price %></p>
+<%= link_to product_path(product) do %>
+  <% if product.photos.attached? %>
+    <% product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, class: 'product-img' %>
+    <% end %>
+  <% else %>
+    <img class="product-show-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
+  <% end %>
+  <h2 class="popup-title"><%= product.title.capitalize %></h2>
+  <p class="popup-address"><%= product.location %></p>
+<% end %>

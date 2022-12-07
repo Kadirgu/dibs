@@ -10,8 +10,8 @@
         <% end %>
         </div>
         <div>
-          <h2 class="site-navigation-title">Welcome!👋<br>
-          <span><%= @user.first_name %></span></h2>
+          <h2 class="site-navigation-title">Welcome to Dibs👋<br>
+          <span>Dig in, <%= @user.first_name %>!</span></h2>
         </div>
       </div>
     <% end %>
@@ -24,7 +24,7 @@
             <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
             <%= submit_tag "Search", class: "button submit-button" %>
           </div>
-
+          <h2 style="margin-top: 20px; margin-bottom: -5px;">Categories</h2>
           <div class="search-filter">
             <% Product::CATEGORIES.each do |category|%>
               <div class="search-button <%= params[:categories]&.include?(category) ? 'button' : ''%> filter-search-button">
@@ -42,6 +42,7 @@
 
     <div class="container">
       <div class="products row">
+      <h2 style="margin-top: 15px; margin-bottom: -5px;">Most recent</h2>
         <% @products.each do |product| %>
           <%= content_tag :div, class: "col-6", id: "dom_id(product)" do %> <!-- Sebi tried to get anchors working -->
             <%= link_to product_path(product) do %>
@@ -55,7 +56,7 @@
                     <img class="product-show-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
                   <% end %>
                   <% if product.spotted == true %>
-                    <div class="btn btn-success position-absolute bottom-0 end-0">
+                    <div class="spotted-label">
                       <p>spotted</p>
                     </div>
                   <% end %>

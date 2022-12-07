@@ -23,6 +23,13 @@
 
 @import "pages/spotted_map";
 
+@import "pages/map_popup";
+
+
 html {
   scroll-behavior: auto !important;
+}
+
+body {
+  background-color: #e8f1ff73;
 }
