@@ -24,7 +24,7 @@
             <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
             <%= submit_tag "Search", class: "button submit-button" %>
           </div>
-
+          <h2 style="margin-top: 17px; margin-bottom: px;">Categories</h2>
           <div class="search-filter">
             <% Product::CATEGORIES.each do |category|%>
               <div class="search-button <%= params[:categories]&.include?(category) ? 'button' : ''%> filter-search-button">
@@ -42,6 +42,7 @@
 
     <div class="container">
       <div class="products row">
+      <h2 style="margin-top: 0px; margin-bottom: -5px;">Most recent</h2>
         <% @products.each do |product| %>
           <%= content_tag :div, class: "col-6", id: "dom_id(product)" do %> <!-- Sebi tried to get anchors working -->
             <%= link_to product_path(product) do %>

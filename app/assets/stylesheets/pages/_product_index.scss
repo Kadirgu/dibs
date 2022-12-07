@@ -34,7 +34,8 @@
   display: flex;
 
   .form-control {
-    padding: .55em;
+    padding: .55em 1em;
+    border-radius: 100px;
   }
 
   .submit-button {
