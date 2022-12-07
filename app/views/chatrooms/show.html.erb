@@ -1,12 +1,12 @@
+<div class="container">
+  <div class="site-navigation">
+    <%= link_to :back do %>
+      <i class="fa fa-arrow-left"></i>
+    <% end %>
+    <h2 class="site-navigation-title">Chat with <%= @chatroom.product.user.first_name %></h2>
+  </div>
 
-<div class="container chatroom"
-  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
-  data-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
-><h1><%= @chatroom.product.title %></h1>
-  <%= link_to '← Go back to main page', products_path, class: "button" %>
-  <br>
-  <br>
+
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
       <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
@@ -22,14 +22,12 @@
   %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message ##{@chatroom.user.first_name}",
+      placeholder: "Send a Message to #{@chatroom.user.first_name}",
       wrapper_html: {class: "flex-grow-1 pe-3", style: "margin-bottom: 0px !important;"},
       input_html: {class:"h-100"}
     %>
 
     <%= f.submit "Send", class: "button" %>
   <% end %>
-
-  <%= link_to '← Go back to chatrooms', chatrooms_path %>
   </div>
 </div>
