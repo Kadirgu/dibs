@@ -1,21 +1,10 @@
-/*CHATROOM*/
-
-.chatroom-search {
-  margin-bottom: 25px;
-  padding: 0px;
-
-  .submit-button {
-    right: 13px;
-  }
-}
-
 .chatroom-card {
-  border-radius: 8px;
   width: 100%;
-  padding: 12px;
-  background-color: #fff;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.77);
   box-shadow: 0px 10px 20px rgba(35, 35, 35, .2);
   text-decoration: none;
+  color: black !important;
   margin: 10px 0px;
   display: flex;
   align-items: center;
@@ -23,38 +12,25 @@
   justify-content: space-between;
 }
 
-.product-img-chatcard {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0px 5px 10px rgba(35,35,35,.2);
-}
-
-.delete-chat {
-  color: #1d284b;
-}
-
-
-/*MESSAGE*/
 .message-user-img {
   width: 45px;
   height: 45px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0px 5px 10px rgba(35,35,35,.2);
 }
 
 .chat-card-text {
-  display: flex;
-  align-items: center;
-  gap: 15px;
   text-decoration: none;
-  color: #1d284b !important;
+  color: black !important;
+}
+
+.black {
+  color:black !important;
 }
 
 .message-row {
   margin-bottom: 10px;
+  padding: 8px;
 }
 
 // To style the message itself
@@ -67,16 +43,9 @@
 }
 
 .sender-style {
-  background-color: #fff;
-  border-radius: 8px;
+  background-color: lightcoral;
 }
 
 .receiver-style {
-  background-color: #1d284b;
-  border-radius: 8px;
-  color: #fff;
-
-  p {
-    color: #fff;
-  }
+  background-color: lightblue;
 }

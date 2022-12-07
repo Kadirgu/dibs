@@ -1,46 +1,40 @@
-<div class="container chatroom">
-  <div class="site-navigation">
-    <%= link_to :back do %>
-      <i class="fa fa-arrow-left"></i>
-    <% end %>
-    <h2 class="site-navigation-title">Your Messages</h2>
-  </div>
-
-    <div class="chatroom-search">
-        <%= form_with url: products_path, method: :get, id: 'searchForm', class: "search-form" do %>
-          <div class="search-bar">
-            <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
-            <%= submit_tag "Search", class: "button submit-button" %>
-          </div>
-        <% end %>
-      </div>
-
-
+<div class="container">
+  <div class="container chatroom">
+    <h1> Chats </h1>
+    <div class="search">
+        <%= form_with url: chatrooms_path, method: :get, class: "d-flex search-field" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search"
+      %>
+      <%= submit_tag "Search", class: "button" %>
+      <% end %>
+    </div>
+    <br>
+    <%= link_to '← Go back to main page', products_path, class: "button" %>
     <% if @chatrooms.empty? %>
-    <p style="text-align: center;">⚠️ You don't have any messages yet. ⚠️</p>
+    <p>"Sorry! Couldn't find what you're looking for!"</p>
     <% else  %>
       <% @chatrooms.each do |chatroom| %>
-        <%= link_to chatroom_path(chatroom) do %>
-          <div class="chatroom-card">
-              <div class="chat-card-text">
-                <% if chatroom.product.photos.attached? %>
-                  <%= cl_image_tag chatroom.product.photos.first.key, class: "product-img-chatcard" %>
-                <% else %>
-                  <img class="product-img-chatcard" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
-                <% end %>
-                <div>
-                  <strong><%= chatroom.product.title.capitalize %></strong><br>
-                  <%= chatroom.product.user.first_name %> <%= chatroom.product.user.last_name %>
-                </div>
-              </div>
-            <div class="archive-feature">
-              <%= link_to archive_chatroom_path(chatroom), data: {turbo_method: :patch, turbo_confirm: "Are you sure?"}  do %>
-                <i class="fa-solid fa-trash-can delete-chat"></i>
+        <div class="chatroom-card">
+          <%= link_to chatroom_path(chatroom), class: "w-100" do %>
+            <div class="chat-card-text">
+              <% if chatroom.product.photos.attached? %>
+                <%= cl_image_tag chatroom.product.photos.first.key, class: "product-img-chatcard" %>
+              <% else %>
+                <img class="product-img-chatcard" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
               <% end %>
+              <strong><%= chatroom.product.user.first_name %></strong><br>
+              <strong><%= chatroom.product.title %></strong>
             </div>
+          <% end %>
+          <div class="archive-feature">
+            <%= link_to archive_chatroom_path(chatroom), data: {turbo_method: :patch, turbo_confirm: "Are you sure?"}  do %>
+              <i class="fa-solid fa-trash-can black"></i>
+            <% end %>
           </div>
-
-        <% end %>
+        </div>
       <% end %>
     <% end %>
   </div>
