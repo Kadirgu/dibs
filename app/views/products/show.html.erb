@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <% if @product.photos %>
+  <% if @product.photos.attached? %>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <% if @product.photos.count > 1 %>
         <ol class="carousel-indicators">

@@ -8,6 +8,11 @@ class Product < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :chatrooms, dependent: :destroy
 
+  validates :title, presence: true
+  validates :price, presence: true
+  validates :location, presence: true
+  validates :category, presence: true
+
   CATEGORIES = ["Kitchen", "Livingroom", "Office", "Bathroom", "Bedroom", "Diningroom", "Garden", "Other", "Spotted"]
   CONDITIONS = ["New", "Good", "Used"]
   MATERIALS = ["Metal", "Wood", "Leather", "Silk", "Cotton", "Plastic"]
