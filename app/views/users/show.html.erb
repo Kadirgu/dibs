@@ -33,10 +33,18 @@
           <% else %>
             <img class="product-img" src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" alt="">
           <% end %>
-
+            <% if product.spotted == true %>
+              <div class="spotted-label">
+                <p>spotted</p>
+              </div>
+            <% end %>
             <div class="product-information">
               <h2 class="product-title"><%= product.title %></h2>
-              <p class="product-price"><%= product.price %> €</p>
+              <% if product.spotted %>
+                <p class="product-price"><span style="">SPOTTED</span></p>
+              <% else %>
+                <p class="product-price"><%= product.price %> €</p>
+              <% end %>
             </div>
             <% if @user.id == current_user.id %>
               <div class="favorite-button">

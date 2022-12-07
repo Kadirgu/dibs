@@ -1,6 +1,8 @@
 <%= simple_form_for(product) do |f| %>
   <%= f.input :spotted, as: :hidden, input_html: { value: false } %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <% unless request.path.include?("/edit") %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <% end %>
   <%= f.input :title%>
   <%= f.input :description%>
   <%= f.input :category, collection: Product::CATEGORIES%>

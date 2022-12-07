@@ -5,7 +5,11 @@
     <% end %>
     <h2 class="site-navigation-title">Edit <%= @product.title %></h2>
   </div>
-  <%= render "form", product: @product %>
+  <% if @product.spotted == true %>
+    <%= render "spottedform", product: @product %>
+  <% else %>
+    <%= render "form", product: @product %>
+  <% end %>
   <br>
   <%= link_to 'Delete Product', product_path(@product), class: 'button secondary', data: {turbo_method: :delete, turbo_confirm: "Are you sure you?"} %>
 
