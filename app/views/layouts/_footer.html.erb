@@ -1,27 +1,56 @@
 <div class="footer">
   <div class="container">
       <div class="footer-container">
-        <%= link_to products_path do %>
-          <i class="fa fa-home"></i>
-        <% end %>
-        <%= link_to favorites_path do %>
-          <i class="fa fa-heart"></i>
-        <% end %>
-        <%= link_to new_product_path do %>
-          <i class="fa fa-plus-circle"></i>
-        <% end %>
-        <%= link_to chatrooms_path do %>
-          <i class="fa fa-envelope"></i>
-        <% end %>
-        <% if user_signed_in? %>
-          <%= link_to user_path(current_user) do %>
-            <i class="fa fa-user"></i>
+
+
+        <%= link_to products_path(status: 'products-active') do %>
+          <% if params[:status] == 'products-active' %>
+            <i class="footer-icon fa fa-home" style="color: #ffca26;"></i>
+          <% else %>
+            <i class="footer-icon fa fa-home"></i>
           <% end %>
+        <% end %>
+
+        <%= link_to favorites_path(status: 'favorites-active') do %>
+          <% if params[:status] == 'favorites-active' %>
+            <i class="footer-icon fa fa-heart" style="color: #ffca26;"></i>
+          <% else %>
+            <i class="footer-icon fa fa-heart"></i>
+          <% end %>
+        <% end %>
+
+        <%= link_to new_product_path(status: 'new_product-active') do %>
+          <% if params[:status] == 'new_product-active' %>
+            <i class="footer-icon fa fa-plus-circle" style="color: #ffca26;"></i>
+          <% else %>
+            <i class="footer-icon fa fa-plus-circle"></i>
+          <% end %>
+        <% end %>
+
+        <%= link_to chatrooms_path(status: 'chatrooms-active') do %>
+          <% if params[:status] == 'chatrooms-active' %>
+            <i class="footer-icon fa fa-envelope" style="color: #ffca26;"></i>
+          <% else %>
+            <i class="footer-icon fa fa-envelope"></i>
+          <% end %>
+        <% end %>
+
+        <% if user_signed_in? %>
+
+          <%= link_to user_path(current_user, status: 'user-active') do %>
+            <% if params[:status] == 'user-active' %>
+              <i class="footer-icon fa fa-user" style="color: #ffca26;"></i>
+            <% else %>
+              <i class="footer-icon fa fa-user"></i>
+            <% end %>
+          <% end %>
+
         <% else %>
           <%= link_to new_user_session_path do %>
-            <i class="fa fa-user"></i>
+            <i class="footer-icon fa fa-user"></i>
           <% end %>
         <% end %>
+
     </div>
   </div>
 </div>
