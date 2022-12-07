@@ -24,12 +24,24 @@ class ProductsController < ApplicationController
     end
 
     @markers = @products.geocoded.map do |product|
-      {
-        lat: product.latitude,
-        lng: product.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {product: product})
-      }
+      if product.spotted == true
+        {
+          lat: product.latitude,
+          lng: product.longitude,
+          info_window: render_to_string(partial: "info_window", locals: {product: product}),
+          image_url: helpers.asset_url("spotted-product-pin.png")
+        }
+      else
+        {
+          lat: product.latitude,
+          lng: product.longitude,
+          info_window: render_to_string(partial: "info_window", locals: {product: product}),
+          image_url: helpers.asset_url("product-pin.png")
+        }
+      end
     end
+
+
   end
 
   def show
@@ -39,11 +51,21 @@ class ProductsController < ApplicationController
     @user = @product.user
     @chatroom = Chatroom.where(product: @product, user: current_user)
     @markers = @product_array.geocoded.map do |product|
-      {
-        lat: product.latitude,
-        lng: product.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {product: product})
-      }
+      if product.spotted == true
+        {
+          lat: product.latitude,
+          lng: product.longitude,
+          info_window: render_to_string(partial: "info_window", locals: {product: product}),
+          image_url: helpers.asset_url("spotted-product-pin.png")
+        }
+      else
+        {
+          lat: product.latitude,
+          lng: product.longitude,
+          info_window: render_to_string(partial: "info_window", locals: {product: product}),
+          image_url: helpers.asset_url("product-pin.png")
+        }
+      end
     end
   end
 
@@ -58,7 +80,7 @@ class ProductsController < ApplicationController
     if @product.material
       @product.material = params[:product][:material].join(", ")
     end
-    
+
     @product.user = current_user
     if @product.save!
       redirect_to product_path(@product)
