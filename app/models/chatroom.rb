@@ -1,5 +1,5 @@
 class Chatroom < ApplicationRecord
-  belongs_to :product, dependent: :destroy
+  belongs_to :product
   belongs_to :user
   has_one :seller, through: :product, source: :user
   has_many :messages, dependent: :destroy
