@@ -20,7 +20,7 @@
               <% end %>
               <div class="product-information">
                 <h2 class="product-title"><%= fav.product.title %></h2>
-                <p class="product-price">$<%= fav.product.price %></p>
+                <p class="product-price"><%= fav.product.price %> €</p>
               </div>
               <div class="favorite-button">
                 <%= link_to favorite_path(fav), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
