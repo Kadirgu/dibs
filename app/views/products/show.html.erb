@@ -80,6 +80,9 @@
     <p><strong>Material:</strong><br><%= @product.material %></p>
     <p><strong>Dimension:</strong><br><%= @product.dimension %> cm</p>
   <% end %>
+  <% if @product.spotted == true %>
+    <p><strong>Spotted at:</strong><br><%= @product.created_at.strftime("%d. %b %Y at %I:%M%p") %></p>
+  <% end %>
     <p><strong>Location:</strong><br><%= @product.location %></p>
 
   <% unless @product.spotted == true %>
