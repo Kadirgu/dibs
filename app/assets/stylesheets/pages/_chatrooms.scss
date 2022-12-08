@@ -32,6 +32,11 @@
   box-shadow: 0px 5px 10px rgba(35,35,35,.2);
 }
 
+.archive-feature i {
+  color: #1d284b;
+  text-decoration: none;
+}
+
 .chat-card-text {
   display: flex;
   gap: 15px;
@@ -48,36 +53,41 @@
   }
 }
 
+/*MESSAGE*/
+.message-row {
+  margin-bottom: 0px;
+  padding: 6px 0px;
+}
 
+.sender-style {
+  background-color: #fff;
+  color: #1d284b;
 
+  p {
+    color: #1d284b;
+    margin: 5px;
+  }
+}
 
+.receiver-style {
+  background-color: #1d284b;
+  color: #fff;
 
-
-
-
-
-
-
-
-
+    p {
+      color: #fff;
+      margin: 5px;
+    }
+}
 
 .message-user-img {
   width: 45px;
   height: 45px;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0px 5px 10px rgba(35,35,35,.2);
+  margin-right: 5px;
 }
 
-.black {
-  color:black !important;
-}
-
-.message-row {
-  margin-bottom: 10px;
-  padding: 8px;
-}
-
-// To style the message itself
 .sender-style, .receiver-style {
   width: 70%;
   max-width: 400px;
@@ -86,10 +96,26 @@
   min-height: 80px;
 }
 
-.sender-style {
-  background-color: lightcoral;
+
+
+/*MESSGA FIELD FORM*/
+.message-field-form  {
+  display: flex;
+  margin-top: 25px;
+
+  .form-control {
+    padding: 0.69em 1em;
+    background: #fff;
+    border: 1px solid #21305e5c;
+    border-radius: 100px;
+  }
 }
 
-.receiver-style {
-  background-color: lightblue;
+.message-type-field {
+  width: 100%;
+}
+
+.message-send-button {
+  position: absolute;
+  right: 12px;
 }
