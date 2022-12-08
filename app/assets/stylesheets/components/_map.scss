@@ -21,3 +21,24 @@
   color: #1d284b !important;
   text-decoration: none !important;
 }
+
+.map-button-button::before {
+  content: '\f5a0';
+  margin-right: 6px;
+  font-family: "Font Awesome 5 Free";
+}
+
+.map-button-button::after {
+  content: 'Map';
+}
+
+
+.map-button-button-list::before {
+  content: '\f03a';
+  margin-right: 6px;
+  font-family: "Font Awesome 5 Free";
+}
+
+.map-button-button-list::after {
+  content: 'List';
+}
