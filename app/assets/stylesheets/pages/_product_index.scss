@@ -19,16 +19,6 @@
 }
 
 /*SEARCH*/
-.search {
-  // position: fixed
-  // box-shadow: 0px 5px 10px rgba(35,35,35,.15);
-
-  width: 100%;
-  top: 0;
-  padding: 15px;
-  z-index: 10;
-}
-
 .search-bar {
   display: flex;
 
@@ -41,7 +31,7 @@
 
   .submit-button {
     position: absolute;
-    right: 16px;
+    right: 13px;
   }
 }
 

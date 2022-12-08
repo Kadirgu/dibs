@@ -7,16 +7,16 @@
   </div>
 
   <div class="message-search">
-      <%= form_with url: products_path, method: :get, id: 'searchForm', class: "search-form" do %>
-        <div class="search-bar">
-          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
-          <%= submit_tag "Search", class: "button submit-button" %>
-        </div>
-      <% end %>
-    </div>
+    <%= form_with url: products_path, method: :get, id: 'searchForm', class: "search-form" do %>
+      <div class="search-bar">
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search" %>
+        <%= submit_tag "Search", class: "button submit-button" %>
+      </div>
+    <% end %>
+  </div>
 
     <% if @chatrooms.empty? %>
-    <p style="text-align: center;">Sorry, you don't have any chats yet.</p>
+    <p style="text-align: center;">⚠️ You don't have any chats yet. ⚠️</p>
     <% else  %>
 
       <% @chatrooms.each do |chatroom| %>
