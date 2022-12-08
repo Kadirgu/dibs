@@ -19,6 +19,14 @@
 }
 
 /*SEARCH*/
+.search {
+  margin: 20px 0px;
+}
+
+.categories {
+  margin-top: 15px;
+}
+
 .search-bar {
   display: flex;
 
@@ -63,11 +71,6 @@
 input[type="checkbox" i]  {
   background-color: transparent;
   appearance: initial;
-}
-
-/*CATEGORIES*/
-.categories {
-  margin: 25px 0px;
 }
 
 /*PRODUCT CARD*/
