@@ -19,6 +19,7 @@
     <% end %>
 
     <div data-controller="search-products">
+
         <div class="search">
           <%= form_with url: products_path, method: :get, id: 'searchForm', class: "search-form" do %>
             <div class="search-bar">
@@ -127,6 +128,5 @@
     map_button.classList.toggle('map-button-button-list')
 
   })
-
 
 </script>
