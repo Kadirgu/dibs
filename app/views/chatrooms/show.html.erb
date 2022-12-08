@@ -9,7 +9,7 @@
       <%= link_to :back do %>
         <i class="fa fa-arrow-left"></i>
       <% end %>
-      <h2 class="site-navigation-title">Your Chat with <%= @chatroom.user.first_name %></i></h2>
+      <h2 class="site-navigation-title">Your Chat with <%= @chatroom.product.user.first_name %></i></h2>
     </div>
 
     <div class="messages" data-chatroom-subscription-target="messages">
@@ -27,7 +27,7 @@
     %>
       <%= f.input :content,
         label: false,
-        placeholder: "Send a Message to #{@chatroom.user.first_name}",
+        placeholder: "Send a Message to #{@chatroom.product.user.first_name}",
         wrapper_html: {class: "message-type-field"},
         input_html: {class:"h-100"}
       %>
