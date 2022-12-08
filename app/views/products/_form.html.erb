@@ -10,9 +10,11 @@
   <%= f.input :material, collection: Product::MATERIALS, input_html: { multiple: true, class: "multiple-select"}, include_hidden: false%>
   <%= f.input :price, placeholder: '0.00 €'%>
   <%= f.input :dimension, placeholder: '100x50x25'%>
+
   <%= f.input :location, placeholder: 'Oranienstraße 6, Berlin',
-      input_html: {data: {address_autocomplete_target: "address"} },
-      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-    %>
+    input_html: {data: {address_autocomplete_target: "address"}, class: 'd-none'},
+    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+  %>
+
   <%= f.submit class: 'button' %>
 <% end %>

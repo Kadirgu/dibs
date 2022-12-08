@@ -1,0 +1,13 @@
+.mapboxgl-ctrl-geocoder {
+  max-width: none;
+  width: 100%;
+  border: 1px solid #ced4da;
+  box-shadow: none;
+  background-color: #F4F4F4;
+  font-size: 1rem !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--pin-right > * {
+  background-color: transparent;
+}
