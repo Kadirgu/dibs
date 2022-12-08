@@ -1,27 +1,71 @@
+/*MESSSAGE SEARCH*/
+.message-search {
+  padding: 0px;
+  margin-bottom: 25px;
+
+  .search-bar .submit-button {
+    right: 13px;
+  }
+}
+
+
+/*CHATROOM CARD*/
 .chatroom-card {
   width: 100%;
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.77);
-  box-shadow: 0px 10px 20px rgba(35, 35, 35, .2);
+  box-shadow: 0px 10px 15px rgba(35, 35, 35, .15);
   text-decoration: none;
-  color: black !important;
   margin: 10px 0px;
   display: flex;
   align-items: center;
   gap: 15px;
   justify-content: space-between;
+  border-radius: 8px;
 }
+
+.product-img-chatcard {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0px 5px 10px rgba(35,35,35,.2);
+}
+
+.chat-card-text {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  .chatroom-title {
+    color: #1d284b;
+    font-weight: 700;
+    font-size: 22px;
+
+    span {
+      font-weight: 300;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .message-user-img {
   width: 45px;
   height: 45px;
   border-radius: 50%;
   object-fit: cover;
-}
-
-.chat-card-text {
-  text-decoration: none;
-  color: black !important;
 }
 
 .black {
