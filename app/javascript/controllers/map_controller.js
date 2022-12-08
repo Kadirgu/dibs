@@ -17,7 +17,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/kadirgu/clbdp3t1a001s14p7uit3nbxb"
+      style: "mapbox://styles/kadirgu/clbext67h000e14ozdm5qziy3"
     })
 
     this.map.resize();
